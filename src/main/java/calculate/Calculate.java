@@ -31,4 +31,8 @@ public class Calculate {
 
 	}
 
+	public double getResult(){
+		return this.result;
+	}
+
 }
