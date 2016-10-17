@@ -12,7 +12,7 @@ public class CalculatorTest{
 				Calculate calc = new Calculate();
 				calc.add(1,7);
 				double result = calc.getResult();
-				assertThat(result, is(8d);
+				assertThat(result, is(8d));
 
 	}
 		@Test
@@ -21,7 +21,7 @@ public class CalculatorTest{
 				Calculate calc = new Calculate();
 				calc.substruct(8,3);
 				double result = calc.getResult();
-				assertThat(result, is(5d);
+				assertThat(result, is(5d));
 
 	}
 		@Test
