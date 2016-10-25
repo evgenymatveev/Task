@@ -3,6 +3,7 @@ package ru.ematveev.point;
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
+import static org.hamcrest.number.IsCloseTo.closeTo;
 
 public class PointTest{
 
@@ -12,7 +13,7 @@ public class PointTest{
 		Point a = new Point(5, 2);
 		Point b = new Point(5, 8);
 		double result = a.distanceTo(b);
-		assertThat(result, is(6d));
+		assertThat(result, closeTo(6d, 0.001));
 	}
 
 	@Test
@@ -22,7 +23,7 @@ public class PointTest{
 			Point b = new Point(5, 8);
 			Point c = new Point(3, 6);
 			double result = new Triangle(a, b, c).area();
-			assertThat(result, is(5d));
+			assertThat(result, closeTo(5d, 0.001));
 	}
 }
 
