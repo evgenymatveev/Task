@@ -25,5 +25,14 @@ public class PointTest{
 			double result = new Triangle(a, b, c).area();
 			assertThat(result, closeTo(5d, 0.001));
 	}
+
+	@Test
+	public void maxTest(){
+
+		double maxvalue = new MaxValue(3.0, 4.0, 5.0).max();
+
+		assertThat(maxvalue, closeTo(5d, 0.001));
+
+	}
 }
 
