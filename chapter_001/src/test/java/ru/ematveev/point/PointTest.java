@@ -34,5 +34,17 @@ public class PointTest{
 		assertThat(maxvalue, closeTo(5d, 0.001));
 
 	}
+
+
+	@Test
+	public void maxPoligon(){
+
+		double maxvalue = new MaxValuePoligon().maxPoligon(3.2, 4.0, 5.5, 6.1);
+
+		assertThat(maxvalue, closeTo(6.1, 0.001));
+
+	}
+
+
 }
 
