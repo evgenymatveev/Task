@@ -9,10 +9,8 @@ public class FactorialTest{
 
 @Test
 public void factorialTest(){
-
 	Factorial f = new Factorial(6);
 	int result = f.factorial();
-
 	assertThat(result, is(720));
 }
 
