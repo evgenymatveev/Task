@@ -12,7 +12,7 @@ public class Square{
 	}
 
 	public double calculate(int x){
-		return a * x * x + b * x + c;;
+		return a * x * x + b * x + c;
 	}
 
 	public void show(int start, int finish, int step){
