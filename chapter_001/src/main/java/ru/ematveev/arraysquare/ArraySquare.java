@@ -12,6 +12,7 @@ public class ArraySquare{
 			i++;	
 	}
 				array = arr2;
+				arr2 = null;
 				return array;
 
 }
