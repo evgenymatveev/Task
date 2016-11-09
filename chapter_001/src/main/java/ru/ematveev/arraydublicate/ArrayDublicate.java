@@ -11,7 +11,7 @@ public class ArrayDublicate{
 				for(int j = 1; j < x; j++){
 					if(array[i] != null){	
 							
-						if(array[i]==array[j+i]){
+						if(array[i].equals(array[j+i])){
 							array[j+1] = null;
 							}				 				
 
