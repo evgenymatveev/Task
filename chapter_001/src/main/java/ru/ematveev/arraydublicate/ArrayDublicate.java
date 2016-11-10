@@ -4,18 +4,18 @@ public class ArrayDublicate{
 
 	public String [] arrayDublicate(String [] array){
 
+
 			int x = array.length;    
 			
 			for(int i = 0; i < x; i++){
 					
 				for(int j = 1; j < x; j++){
-					if(array[i] != null){	
+					
+					if(array[i] == null) break;	
 							
 						if(array[i].equals(array[j+i])){
-							array[j+1] = null;
+							array[i] = null;
 							}				 				
-
-						}
 					
 					}
 
