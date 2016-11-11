@@ -10,8 +10,9 @@ public class ArrayDublicateTest{
 	@Test
 	public void arrayDublicateTest(){
 		ArrayDublicate array = new ArrayDublicate();
-		String [] arr = new String []{"Света", "Женя", "Кристина", "Женя"};
+		String [] arr = new String []
+						{"Света", "Женя", "Кристина", "Женя", "Света", "Маша", "Женя"};
 		assertThat((array.arrayDublicate(arr)), is(new String[]
-						{"Света", "Женя", "Кристина", null}));
+						{null, null, "Кристина", null, "Света", "Маша", "Женя"}));
 }
 }
