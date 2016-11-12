@@ -11,8 +11,13 @@ public class ArrayDublicateTest{
 	public void arrayDublicateTest(){
 		ArrayDublicate array = new ArrayDublicate();
 		String [] arr = new String []
-						{"Света", "Женя", "Кристина", "Женя", "Света", "Маша", "Женя"};
+						{"Света", "Женя", "Кристина", "Женя", "Света", "Маша", "Женя", "Кристина", "Роман"};
 		assertThat((array.arrayDublicate(arr)), is(new String[]
-						{null, null, "Кристина", null, "Света", "Маша", "Женя"}));
+						{"Света", "Маша", "Женя", "Кристина", "Роман", null, null, null, null}));
+
+	}
 }
-}
+
+
+
+	
