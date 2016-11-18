@@ -12,6 +12,6 @@ public class StringSubTest{
 	@Test
 	public void containsTest(){
 		StringSub d = new StringSub();
-		assertThat(d.contains("Светлана", "ветла"), is(true));
+		assertThat(d.contains("Светлана", "dве"), is(false));
 	}
 }
