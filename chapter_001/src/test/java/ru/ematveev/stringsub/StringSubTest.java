@@ -13,5 +13,6 @@ public class StringSubTest{
 	public void containsTest(){
 		StringSub d = new StringSub();
 		assertThat(d.contains("Светлана", "dве"), is(false));
+		assertThat(d.contains("Светлана", "етла"), is(true));
 	}
 }
