@@ -1,0 +1,16 @@
+<project>
+
+    <parent>
+        <groupId>ru.matveev</groupId>
+        <artifactId>CoursJava</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ru.matveev</groupId>
+    <artifactId>chapter_002</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+
+
+</project>
