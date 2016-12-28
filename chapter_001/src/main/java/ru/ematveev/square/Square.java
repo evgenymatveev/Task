@@ -16,9 +16,9 @@ public class Square{
 	}
 
 	public void show(int start, int finish, int step){
-			for(int i = 0; i <= finish; i = i + step){
-				System.out.println(calculate(start));
-				start = start + step;
+		for(int i = 0; i <= finish; i = i + step){
+			System.out.println(calculate(start));
+			start = start + step;
 		}
 	}
 }

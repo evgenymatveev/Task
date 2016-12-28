@@ -4,33 +4,33 @@ import java.lang.Math.*;
 
 
 public class Triangle {
-			public Point a;
-			public Point b;
-			public Point c;
+	public Point a;
+	public Point b;
+	public Point c;
 
 	public Triangle(Point a, Point b, Point c) {
-			this.a = a;
-			this.b = b;
-			this.c = c;
+		this.a = a;
+		this.b = b;
+		this.c = c;
 	}
 
 	public double area() {
 		//calculate the triangle area
 
-				double ab = a.distanceTo(b);
-				double bc = b.distanceTo(c);
-				double ca = c.distanceTo(a);
+		double ab = a.distanceTo(b);
+		double bc = b.distanceTo(c);
+		double ca = c.distanceTo(a);
 
-				double d = (ab + bc + ca)/2;
-				double s = Math.sqrt(d*(d-ab)*(d-bc)*(d-ca));
+		double d = (ab + bc + ca)/2;
+		double s = Math.sqrt(d*(d-ab)*(d-bc)*(d-ca));
 
-				if (s > 0)
+		if (s > 0)
 
-					return s;
+			return s;
 
-				else 
+		else
 
-					return -1;
-		}
-			
+			return -1;
+	}
+
 }
