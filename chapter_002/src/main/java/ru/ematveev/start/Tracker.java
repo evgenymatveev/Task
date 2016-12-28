@@ -82,7 +82,7 @@ public class Tracker {
      * @param name ID.
      * @return name.
      */
-    protected Item findByName(String name) {
+    public Item findByName(String name) {
         Item result = null;
         for (Item item : items) {
             if (item != null && item.getName().equals(name)) {
@@ -98,7 +98,7 @@ public class Tracker {
      * @param id id.
      * @return item.
      */
-    protected Item findById(String id) {
+    public Item findById(String id) {
         Item result = null;
         for (Item item : items) {
             if (item != null && item.getId().equals(id)) {
@@ -113,7 +113,7 @@ public class Tracker {
      * metod of generate the random number for ID.
      * @return String.
      */
-    String generateId() {
+    public String generateId() {
         return String.valueOf(System.currentTimeMillis() + RN.nextInt());
     }
 }
