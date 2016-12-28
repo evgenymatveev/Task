@@ -1,17 +1,17 @@
-package ru.ematveev.start;
+package ru.ematveev;
 
 import org.junit.Test;
+import org.junit.Before;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertNotEquals;
 import ru.ematveev.model.Item;
-import ru.ematveev.model.Task;
-
+import ru.ematveev.start.Tracker;
 
 /**
- * Class.
+ * Class TrackerTest for testing of the metods of the class Tracker.
  *
  * @author Matveev Evgeny.
  * @version 1.0.
@@ -19,16 +19,46 @@ import ru.ematveev.model.Task;
  */
 public class TrackerTest {
     /**
+     * Count.
+     */
+    private final long count = 5;
+    /**
+     * Tracker for create the object.
+     */
+    private Tracker tracker;
+    /**
+     * Item for create the item.
+     */
+    private Item item;
+    /**
+     * Item for create the item1.
+     */
+    private Item item1;
+    /**
+     * Item for create the item2.
+     */
+    private Item item2;
+
+    /**
+     * Metod testCreateObjectAndItemsForTests for set persistent variables.
+     */
+    @Before
+    public void testCreateObjectAndItemsForTests() {
+
+        tracker = new Tracker();
+
+        item = new Item("task", "descr", count);
+
+        item1 = new Item("task1", "descr1", count);
+
+        item2 = new Item("task2", "descr2", count);
+    }
+    /**
      * The metod testAdd() checks for adding items to the array.
      * @throws Exception exception.
      */
     @Test
     public void testAdd() throws Exception {
-        final long count = 5;
-
-        Tracker tracker = new Tracker();
-
-        Item item = new Item("task", "enter", count);
 
         assertSame(item, tracker.add(item));
     }
@@ -39,20 +69,19 @@ public class TrackerTest {
      */
     @Test
     public void testUpdate() throws Exception {
-        final long count = 5;
+        tracker.add(item);
 
-        Tracker tracker = new Tracker();
+        Item task = new Item("task", "description", count);
 
-        Item item = tracker.add(new Task("task", "descrip", count));
+        task.setId(item.getId());
 
-        tracker.update(item.getId(), new Task("task", "description", count));
+        tracker.update(item.getId(), task);
 
         Item itemUpdate = tracker.findByName("task");
 
         String actualValue = itemUpdate.getDescription();
 
         assertThat(actualValue, is("description"));
-
     }
 
     /**
@@ -61,15 +90,11 @@ public class TrackerTest {
      */
     @Test
     public void testDelete() throws Exception {
-        final long count = 5;
+        Item task = tracker.add(item);
 
-        Tracker tracker = new Tracker();
+        String itemID = task.getId();
 
-        Item item = tracker.add(new Item("task", "enter", count));
-
-        String itemID = item.getId();
-
-        tracker.delete(item);
+        tracker.delete(task);
 
         assertNull(tracker.findById(itemID));
     }
@@ -80,24 +105,13 @@ public class TrackerTest {
      */
     @Test
     public void testFindAll() throws Exception {
-        final long count = 5;
-
-        Tracker tracker = new Tracker();
-
-        Item item = new Item("task", "enter", count);
-        Item item1 = new Item("task1", "enter1", count);
-        Item item2 = new Item("task2", "enter2", count);
-        Item item3 = new Item("task2", "enter2", count);
-
         tracker.add(item);
         tracker.add(item1);
         tracker.add(item2);
-        tracker.add(item3);
 
         Item[] actualValue = tracker.findAll();
 
-        assertThat(actualValue, is(new Item[]{item, item1, item2, item3}));
-
+        assertThat(actualValue, is(new Item[]{item, item1, item2}));
     }
 
     /**
@@ -106,11 +120,6 @@ public class TrackerTest {
      */
     @Test
     public void testFindByName() throws Exception {
-        final long count = 5;
-
-        Tracker tracker = new Tracker();
-
-        Item item = new Item("task", "enter", count);
 
         tracker.add(item);
 
@@ -125,12 +134,6 @@ public class TrackerTest {
      */
     @Test
     public void findById() throws Exception {
-        final long count = 5;
-
-        Tracker tracker = new Tracker();
-
-        Item item = new Item("task", "enter", count);
-
         tracker.add(item);
 
         String itemID = item.getId();
@@ -145,8 +148,6 @@ public class TrackerTest {
     @Test
     public void testGenerateId() throws Exception {
         final int x = 10000;
-
-        Tracker tracker = new Tracker();
 
         String actualValue1 = "";
         String actualValue2 = "";
