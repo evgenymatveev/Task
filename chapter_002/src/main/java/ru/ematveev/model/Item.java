@@ -31,7 +31,7 @@ public class Item {
 
     }
     /**
-     * constructor.
+     * constructor for the three parameters.
      * @param name name.
      * @param description descriptiion.
      * @param create create.
@@ -41,6 +41,16 @@ public class Item {
         this.name = name;
         this.description = description;
         this.create = create;
+    }
+
+    /**
+     * constructor for the two parameters.
+     * @param name name.
+     * @param description description.
+     */
+    public Item(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
     /**
