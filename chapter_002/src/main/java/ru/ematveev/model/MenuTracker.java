@@ -161,7 +161,6 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             String id = input.ask("Please, enter the task's id: ");
             Item task = tracker.findById(id);
-            task.setId(id);
             tracker.delete(task);
         }
 
