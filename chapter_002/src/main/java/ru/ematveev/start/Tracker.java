@@ -108,6 +108,13 @@ public class Tracker {
         }
         return result;
     }
+    /**
+     * The method for delete the all items.
+     */
+    public void deleteAll() {
+        this.items = new Item[this.items.length];
+        position = 0;
+    }
 
     /**
      * metod of generate the random number for ID.
