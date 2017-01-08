@@ -51,7 +51,6 @@ public class MenuTracker {
         this.actions[5] = new FindByIdItem();
         this.actions[6] = new DeleteAllItem();
     }
-
     /**
      * Method the key number calling method execute().
      * @param key key.
