@@ -15,7 +15,7 @@ public class MenuTracker {
     /**
      * The number of menu items.
      */
-    private final int x = 6;
+    private final int x = 7;
     /**
      * Variable for input information from the user.
      */
@@ -49,6 +49,7 @@ public class MenuTracker {
         this.actions[3] = this.new DeleteItem();
         this.actions[4] = new FindByNameItem();
         this.actions[5] = new FindByIdItem();
+        this.actions[6] = new DeleteAllItem();
     }
 
     /**
@@ -279,6 +280,45 @@ public class MenuTracker {
          */
         public String info() {
             return String.format("%s. %s", this.key(), "Edit the item.");
+        }
+    }
+
+
+    /**
+     * Class DeleteAllItem - implement the interface UserAction for delete all the item.
+     */
+    private class DeleteAllItem implements UserAction {
+        /**
+         * Number key for memu.
+         */
+        private final int countKey = 6;
+        /**
+         * The method returns the number key.
+         * @return number 2.
+         */
+        public int key() {
+            return countKey;
+        }
+
+        /**
+         * The method receives a confirmation from user and removes all items.
+         * @param input input.
+         * @param tracker tracker.
+         */
+        public void execute(Input input, Tracker tracker) {
+            String confirm = input.ask("Are you sure want do delete all items?: ");
+            if (confirm.equals("y")) {
+                tracker.deleteAll();
+            }
+
+        }
+
+        /**
+         * Method for output on the screen menu items.
+         * @return String.
+         */
+        public String info() {
+            return String.format("%s. %s", this.key(), "Delete all the item.");
         }
     }
 
