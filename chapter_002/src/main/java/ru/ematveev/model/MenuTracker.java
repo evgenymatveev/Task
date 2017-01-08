@@ -8,6 +8,7 @@ import ru.ematveev.start.UserAction;
  * Class UpdateItem - implement the interface UserAction for update the item.
  */
 class UpdateItem implements UserAction {
+
         /**
          * The method returns the number key.
          * @return number 2.
