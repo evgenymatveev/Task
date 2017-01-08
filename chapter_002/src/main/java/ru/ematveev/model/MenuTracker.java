@@ -5,40 +5,6 @@ import ru.ematveev.start.Tracker;
 import ru.ematveev.start.UserAction;
 
 /**
- * Class UpdateItem - implement the interface UserAction for update the item.
- */
-class UpdateItem implements UserAction {
-
-        /**
-         * The method returns the number key.
-         * @return number 2.
-         */
-        public int key() {
-            return 2;
-        }
-        /**
-         * The method prompting the user information of the application and update the item.
-         * @param input input.
-         * @param tracker tracker.
-         */
-        public void execute(Input input, Tracker tracker) {
-            String id = input.ask("Please, enter the task's id: ");
-            String name = input.ask("Please, enter the task's name: ");
-            String desc = input.ask("Please, enter the task's desc: ");
-            Task task = new Task(name, desc);
-            task.setId(id);
-            tracker.update(task.getId(), task);
-        }
-        /**
-         * Method for output on the screen menu items.
-         * @return String.
-         */
-        public String info() {
-            return String.format("%s. %s", this.key(), "Edit the item.");
-        }
-    }
-
-/**
  * Class for create menu.
  *
  * @author Matveev Evgeny.
@@ -79,7 +45,7 @@ public class MenuTracker {
     public void fillAction() {
         this.actions[0] = this.new AddItem();
         this.actions[1] = new MenuTracker.ShowItems();
-        this.actions[2] = new UpdateItem();
+        this.actions[2] = this.new UpdateItem();
         this.actions[3] = this.new DeleteItem();
         this.actions[4] = new FindByNameItem();
         this.actions[5] = new FindByIdItem();
@@ -156,7 +122,7 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             for (Item item : tracker.findAll()) {
                 System.out.println(
-                        String.format("%s. %s", item.getId(), item.getName())
+                        String.format("%s. %s. %s", item.getId(), item.getName(), item.getDescription())
                 );
             }
         }
@@ -193,9 +159,7 @@ public class MenuTracker {
          */
         public void execute(Input input, Tracker tracker) {
             String id = input.ask("Please, enter the task's id: ");
-            String name = input.ask("Please, enter the task's name: ");
-            String desc = input.ask("Please, enter the task's desc: ");
-            Task task = new Task(name, desc);
+            Item task = tracker.findById(id);
             task.setId(id);
             tracker.delete(task);
         }
@@ -284,6 +248,40 @@ public class MenuTracker {
             return String.format("%s. %s", this.key(), "Search the item Id.");
         }
     }
+    /**
+     * Class UpdateItem - implement the interface UserAction for update the item.
+     */
+    private class UpdateItem implements UserAction {
+
+        /**
+         * The method returns the number key.
+         * @return number 2.
+         */
+        public int key() {
+            return 2;
+        }
+        /**
+         * The method prompting the user information of the application and update the item.
+         * @param input input.
+         * @param tracker tracker.
+         */
+        public void execute(Input input, Tracker tracker) {
+            String id = input.ask("Please, enter the task's id: ");
+            String name = input.ask("Please, enter the task's name: ");
+            String desc = input.ask("Please, enter the task's desc: ");
+            Task task = new Task(name, desc);
+            task.setId(id);
+            tracker.update(task.getId(), task);
+        }
+        /**
+         * Method for output on the screen menu items.
+         * @return String.
+         */
+        public String info() {
+            return String.format("%s. %s", this.key(), "Edit the item.");
+        }
+    }
+
 
 
 }
