@@ -2,11 +2,13 @@ package ru.ematveev;
 
 import org.junit.Test;
 import org.junit.Before;
+
+import static junit.framework.TestCase.assertNull;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertNotEquals;
+
 import ru.ematveev.model.Item;
 import ru.ematveev.start.Tracker;
 
@@ -158,6 +160,21 @@ public class TrackerTest {
 
             assertNotEquals(actualValue1, actualValue2);
         }
+    }
+
+    /**
+     * The metod testDeleteAll() checks for deleting all items.
+     * @throws Exception exception.
+     */
+    @Test
+    public void testDeleteAll() throws Exception {
+        Item task = tracker.add(item);
+        Item task1 = tracker.add(item1);
+        Item task2 = tracker.add(item2);
+
+        tracker.deleteAll();
+
+        assertThat(0, is(tracker.findAll().length));
     }
 
 }
