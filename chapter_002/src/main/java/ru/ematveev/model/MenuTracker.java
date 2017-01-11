@@ -15,7 +15,7 @@ public class MenuTracker {
     /**
      * The number of menu items.
      */
-    private final int x = 7;
+    private final int x = 8;
     /**
      * Variable for input information from the user.
      */
@@ -50,6 +50,7 @@ public class MenuTracker {
         this.actions[4] = new FindByNameItem();
         this.actions[5] = new FindByIdItem();
         this.actions[6] = new DeleteAllItem();
+        this.actions[7] = new AddCommentForItem();
     }
     /**
      * Method the key number calling method execute().
@@ -84,7 +85,7 @@ public class MenuTracker {
 
         /**
          * The method prompting the user information of the application and adds it to the array.
-          * @param input input.
+         * @param input input.
          * @param tracker tracker.
          */
         public void execute(Input input, Tracker tracker) {
@@ -199,6 +200,7 @@ public class MenuTracker {
             System.out.println(
                     String.format("%s, %s, %s", item.getId(), item.getName(), item.getDescription())
             );
+            item.getComments().arrayOutComment();
         }
 
         /**
@@ -237,6 +239,7 @@ public class MenuTracker {
             System.out.println(
                     String.format("%s, %s, %s", item.getId(), item.getName(), item.getDescription())
             );
+            item.getComments().arrayOutComment();
         }
 
         /**
@@ -319,7 +322,41 @@ public class MenuTracker {
             return String.format("%s. %s", this.key(), "Delete all the item.");
         }
     }
+    /**
+     * Class AddCommentForItem - implement the interface UserAction for add comment in the item.
+     */
+    private class AddCommentForItem implements UserAction {
+        /**
+         * Number key for memu.
+         */
+        private final int countKey = 7;
+        /**
+         * The method returns the number key.
+         * @return number 2.
+         */
+        public int key() {
+            return countKey;
+        }
 
+        /**
+         * The method receives a confirmation from user and removes all items.
+         * @param input input.
+         * @param tracker tracker.
+         */
+        public void execute(Input input, Tracker tracker) {
+            String id = input.ask("Please, enter the task's id: ");
+            Item item = tracker.findById(id);
+            String comm = (input.ask("Please, enter comment for your Item: "));
+            item.getComments().addComments(comm);
 
+        }
 
+        /**
+         * Method for output on the screen menu items.
+         * @return String.
+         */
+        public String info() {
+            return String.format("%s. %s", this.key(), "Add comment for the item.");
+        }
+    }
 }
