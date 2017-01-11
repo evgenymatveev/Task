@@ -8,21 +8,25 @@ package ru.ematveev.model;
  */
 public class Item {
     /**
-     * name.
+     * Name.
      */
     private String name;
     /**
-     * description.
+     * Description.
      */
     private String description;
     /**
-     * time create the item.
+     * Time create the item.
      */
     private long create;
     /**
-     * personal number.
+     * Personal number.
      */
     private String id;
+    /**
+     * Comment.
+     */
+    private Comment comments;
 
     /**
      * default constructor.
@@ -41,6 +45,7 @@ public class Item {
         this.name = name;
         this.description = description;
         this.create = create;
+        this.comments = new Comment();
     }
 
     /**
@@ -51,6 +56,7 @@ public class Item {
     public Item(String name, String description) {
         this.name = name;
         this.description = description;
+        this.comments = new Comment();
     }
 
     /**
@@ -96,6 +102,14 @@ public class Item {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    /**
+     * Method for return the comment.
+     * @return comments.
+     */
+    public Comment getComments() {
+        return comments;
     }
 }
 
