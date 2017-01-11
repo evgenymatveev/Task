@@ -115,7 +115,6 @@ public class Tracker {
         this.items = new Item[this.items.length];
         position = 0;
     }
-
     /**
      * metod of generate the random number for ID.
      * @return String.
