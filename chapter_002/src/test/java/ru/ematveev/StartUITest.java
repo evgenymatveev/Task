@@ -133,6 +133,27 @@ public class StartUITest {
 
     }
 
+    /**
+     * Test for search by name the item.
+     * @throws Exception Exception.
+     */
+    @Test
+    public void testWhenUserSearchByNameItem() throws Exception {
+        Item task = new Task("task", "desc");
+
+        tracker.add(task);
+
+        Input input = new StubInput(new String[] {"4", "task", "y"});
+
+        final MenuTracker.IPrinter printer = mock(MenuTracker.IPrinter.class);
+
+        new StartUI(input, tracker, printer).init();
+
+        String id = tracker.findAll()[0].getId();
+
+        verify(printer).println(id + "." + " " + "task" + "." + " " + "desc");
+
+    }
 
 
 
