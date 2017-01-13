@@ -13,20 +13,33 @@ public class StartUI {
      * Variable input interface implementations.
      */
     private Input input;
+    /**
+     * Used the tracker.
+     */
+    private Tracker tracker;
+    /**
+     * Used the IPrinter.
+     */
+    private MenuTracker.IPrinter printer;
+
 
     /**
      * Constructor.
      * @param input input.
+     * @param tracker tracker.
+     * @param printer printer.
      */
-    public StartUI(Input input) {
+    public StartUI(Input input, Tracker tracker, MenuTracker.IPrinter printer) {
         this.input = input;
+        this.tracker = tracker;
+        this.printer = printer;
+
     }
     /**
      * The initialization method work.
      */
     public void init() {
-        Tracker tracker = new Tracker();
-        MenuTracker menu = new MenuTracker(this.input, tracker);
+        MenuTracker menu = new MenuTracker(this.input, tracker, this.printer);
         menu.fillAction();
         do {
             menu.show();
@@ -39,7 +52,14 @@ public class StartUI {
      * @param args args.
      */
     public static void main(String[] args) {
+        Tracker tracker = new Tracker();
         Input input = new ConsoleInput();
-        new StartUI(input).init();
+        MenuTracker.IPrinter printer = new MenuTracker.IPrinter() {
+            @Override
+            public void println(String text) {
+                System.out.println(text);
+            }
+        };
+        new StartUI(input, tracker, printer).init();
     }
 }
