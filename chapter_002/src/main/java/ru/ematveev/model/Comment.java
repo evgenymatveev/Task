@@ -31,11 +31,12 @@ public class Comment {
 
     /**
      * Method for the output to the console.
+     * @param printer printer.
      */
-    public void arrayOutComment() {
+    public void arrayOutComment(MenuTracker.IPrinter printer) {
         for (String comment : arrayComment) {
             if (comment != null) {
-                System.out.println(comment);
+                printer.println(comment);
             } else {
                 break;
             }
