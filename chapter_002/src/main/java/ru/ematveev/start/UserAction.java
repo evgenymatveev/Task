@@ -1,5 +1,7 @@
 package ru.ematveev.start;
 
+import ru.ematveev.model.MenuTracker;
+
 /**
  * Interface for create the key, format string and prompting the user information of the application and adds it to the.
  *
@@ -18,8 +20,9 @@ public interface UserAction {
      * Base the method prompting the user information of the application and adds it to the array.
      * @param input input.
      * @param tracker tracker.
+     * @param printer printer.
      */
-    void execute(Input input, Tracker tracker);
+    void execute(Input input, Tracker tracker, MenuTracker.IPrinter printer);
 
     /**
      * Base method for output on the screen menu items.
