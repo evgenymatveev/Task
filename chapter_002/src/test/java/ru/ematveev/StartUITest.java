@@ -10,6 +10,7 @@ import ru.ematveev.start.StartUI;
 import ru.ematveev.start.StubInput;
 import ru.ematveev.start.Tracker;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -76,6 +77,62 @@ public class StartUITest {
 
         verify(printer).println(id + "." + " " + "task" + "." + " " + "desc");
     }
+
+    /**
+     * Test for update the item.
+     * @throws Exception Exception.
+     */
+    @Test
+    public void testWhenUserUpdateItem() throws Exception {
+        Item task = new Task("task", "desc");
+
+        tracker.add(task);
+
+        String id = tracker.findAll()[0].getId();
+
+        Input input = new StubInput(new String[] {"2", id, "task1", "desc1", "y"});
+
+        MenuTracker.IPrinter printer = new MenuTracker.IPrinter() {
+            @Override
+            public void println(String text) {
+                System.out.println(text);
+            }
+        };
+
+        new StartUI(input, tracker, printer).init();
+
+        assertThat(task.getId(), is(id));
+        assertThat(tracker.findAll()[0].getName(), is("task1"));
+        assertThat(tracker.findAll()[0].getDescription(), is("desc1"));
+
+    }
+
+    /**
+     * Test for delete the item.
+     * @throws Exception Exception.
+     */
+    @Test
+    public void testWhenUserDeleteItem() throws Exception {
+        Item task = new Task("task", "desc");
+
+        tracker.add(task);
+
+        String id = tracker.findAll()[0].getId();
+
+        Input input = new StubInput(new String[] {"3", id, "y"});
+
+        MenuTracker.IPrinter printer = new MenuTracker.IPrinter() {
+            @Override
+            public void println(String text) {
+                System.out.println(text);
+            }
+        };
+        new StartUI(input, tracker, printer).init();
+
+        assertNull(tracker.findById(id));
+
+    }
+
 
 
 
