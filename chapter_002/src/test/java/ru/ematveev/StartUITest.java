@@ -155,7 +155,77 @@ public class StartUITest {
 
     }
 
+    /**
+     * Test for search by id the item.
+     * @throws Exception Exception.
+     */
+    @Test
+    public void testWhenUserSearchByIdItem() throws Exception {
+        Item task = new Task("task", "desc");
 
+        tracker.add(task);
+
+        String id = tracker.findAll()[0].getId();
+
+        Input input = new StubInput(new String[] {"5", id, "y"});
+
+        final MenuTracker.IPrinter printer = mock(MenuTracker.IPrinter.class);
+
+        new StartUI(input, tracker, printer).init();
+
+
+        verify(printer).println(id + "." + " " + "task" + "." + " " + "desc");
+
+    }
+    /**
+     * Test for delete the all item, but user answer no.
+     * @throws Exception Exception.
+     */
+    @Test
+    public void testWhenUserDeleteAllItemButAnswerNon() throws Exception {
+        Item task = new Task("task", "desc");
+
+        tracker.add(task);
+
+        String id = tracker.findAll()[0].getId();
+
+        Input input = new StubInput(new String[] {"6", "n", "y"});
+
+        MenuTracker.IPrinter printer = new MenuTracker.IPrinter() {
+            @Override
+            public void println(String text) {
+                System.out.println(text);
+            }
+        };
+        new StartUI(input, tracker, printer).init();
+
+        assertThat(tracker.findAll()[0].getName(), is("task"));
+
+    }
+    /**
+     * Test for delete the all item, but user answer yes.
+     * @throws Exception Exception.
+     */
+    @Test
+    public void testWhenUserDeleteAllItemButAnswerYes() throws Exception {
+        Item task = new Task("task", "desc");
+
+        tracker.add(task);
+
+        String id = tracker.findAll()[0].getId();
+
+        Input input = new StubInput(new String[] {"6", "y", "y"});
+
+        MenuTracker.IPrinter printer = new MenuTracker.IPrinter() {
+            @Override
+            public void println(String text) {
+                System.out.println(text);
+            }
+        };
+        new StartUI(input, tracker, printer).init();
+
+        assertNull(tracker.findById(id));
+    }
 
 
 
