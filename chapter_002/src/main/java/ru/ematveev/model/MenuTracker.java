@@ -13,6 +13,10 @@ import ru.ematveev.start.UserAction;
  */
 public class MenuTracker {
     /**
+     * Create IPrinter for testing void method.
+     */
+    private IPrinter printer;
+    /**
      * The number of menu items.
      */
     private final int x = 8;
@@ -33,10 +37,12 @@ public class MenuTracker {
      * Constructor MenuTracker.
      * @param input input.
      * @param tracker tracker.
+     * @param printer printer.
      */
-    public MenuTracker(Input input, Tracker tracker) {
+    public MenuTracker(Input input, Tracker tracker, IPrinter printer) {
         this.input = input;
         this.tracker = tracker;
+        this.printer = printer;
     }
 
     /**
@@ -44,7 +50,7 @@ public class MenuTracker {
      */
     public void fillAction() {
         this.actions[0] = this.new AddItem();
-        this.actions[1] = new MenuTracker.ShowItems();
+        this.actions[1] = this.new ShowItems();
         this.actions[2] = this.new UpdateItem();
         this.actions[3] = this.new DeleteItem();
         this.actions[4] = new FindByNameItem();
@@ -57,7 +63,7 @@ public class MenuTracker {
      * @param key key.
      */
     public void select(int key) {
-        this.actions[key].execute(this.input, this.tracker);
+        this.actions[key].execute(this.input, this.tracker, this.printer);
     }
 
     /**
@@ -71,6 +77,16 @@ public class MenuTracker {
         }
     }
 
+    /**
+     * Interface IPrinter.
+     */
+    public interface IPrinter {
+        /**
+         * Method for realization.
+         * @param text text.
+         */
+        void println(String text);
+    }
     /**
      * Inner class of the class MenuTracker implements the interface UserAction.
      */
@@ -87,8 +103,9 @@ public class MenuTracker {
          * The method prompting the user information of the application and adds it to the array.
          * @param input input.
          * @param tracker tracker.
+         * @param printer printer.
          */
-        public void execute(Input input, Tracker tracker) {
+        public void execute(Input input, Tracker tracker, IPrinter printer) {
             String name = input.ask("Please, enter the task's name: ");
             String desc = input.ask("Please, enter the task's desc: ");
             tracker.add(new Task(name, desc));
@@ -106,7 +123,7 @@ public class MenuTracker {
     /**
      * Class ShowItems - implement the interface UserAction for show the items.
      */
-    private static class ShowItems implements UserAction {
+    private class ShowItems implements UserAction {
         /**
          * The method returns the number key.
          * @return number 1.
@@ -119,10 +136,11 @@ public class MenuTracker {
          * The method displays on screen all the items.
          * @param input input.
          * @param tracker tracker.
+         * @param printer printer.
          */
-        public void execute(Input input, Tracker tracker) {
+        public void execute(Input input, Tracker tracker, IPrinter printer) {
             for (Item item : tracker.findAll()) {
-                System.out.println(
+                printer.println(
                         String.format("%s. %s. %s", item.getId(), item.getName(), item.getDescription())
                 );
             }
@@ -136,7 +154,6 @@ public class MenuTracker {
             return String.format("%s. %s", this.key(), "Show all items.");
         }
     }
-
     /**
      * Class DeleteItem - implement the interface UserAction for delete the item.
      */
@@ -157,8 +174,9 @@ public class MenuTracker {
          * The method prompting the user information of the application and delete item.
          * @param input input.
          * @param tracker tracker.
+         * @param printer printer.
          */
-        public void execute(Input input, Tracker tracker) {
+        public void execute(Input input, Tracker tracker, IPrinter printer) {
             String id = input.ask("Please, enter the task's id: ");
             Item task = tracker.findById(id);
             tracker.delete(task);
@@ -193,8 +211,9 @@ public class MenuTracker {
          * The method search for an item named.
          * @param input input.
          * @param tracker tracker.
+         * @param printer printer.
          */
-        public void execute(Input input, Tracker tracker) {
+        public void execute(Input input, Tracker tracker, IPrinter printer) {
             String name = input.ask("Please, enter the task's name: ");
             Item item = tracker.findByName(name);
             System.out.println(
@@ -232,8 +251,9 @@ public class MenuTracker {
          * The method search for an item named.
          * @param input input.
          * @param tracker tracker.
+         * @param printer printer.
          */
-        public void execute(Input input, Tracker tracker) {
+        public void execute(Input input, Tracker tracker, IPrinter printer) {
             String id = input.ask("Please, enter the task's id: ");
             Item item = tracker.findById(id);
             System.out.println(
@@ -266,8 +286,9 @@ public class MenuTracker {
          * The method prompting the user information of the application and update the item.
          * @param input input.
          * @param tracker tracker.
+         * @param printer printer.
          */
-        public void execute(Input input, Tracker tracker) {
+        public void execute(Input input, Tracker tracker, IPrinter printer) {
             String id = input.ask("Please, enter the task's id: ");
             String name = input.ask("Please, enter the task's name: ");
             String desc = input.ask("Please, enter the task's desc: ");
@@ -283,7 +304,6 @@ public class MenuTracker {
             return String.format("%s. %s", this.key(), "Edit the item.");
         }
     }
-
 
     /**
      * Class DeleteAllItem - implement the interface UserAction for delete all the item.
@@ -305,13 +325,13 @@ public class MenuTracker {
          * The method receives a confirmation from user and removes all items.
          * @param input input.
          * @param tracker tracker.
+         * @param printer printer.
          */
-        public void execute(Input input, Tracker tracker) {
+        public void execute(Input input, Tracker tracker, IPrinter printer) {
             String confirm = input.ask("Are you sure want do delete all items?: ");
             if (confirm.equals("y")) {
                 tracker.deleteAll();
             }
-
         }
 
         /**
@@ -342,13 +362,13 @@ public class MenuTracker {
          * The method receives a confirmation from user and removes all items.
          * @param input input.
          * @param tracker tracker.
+         * @param printer printer.
          */
-        public void execute(Input input, Tracker tracker) {
+        public void execute(Input input, Tracker tracker, IPrinter printer) {
             String id = input.ask("Please, enter the task's id: ");
             Item item = tracker.findById(id);
             String comm = (input.ask("Please, enter comment for your Item: "));
             item.getComments().addComments(comm);
-
         }
 
         /**
