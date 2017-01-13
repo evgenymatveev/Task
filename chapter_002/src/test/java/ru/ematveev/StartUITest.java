@@ -15,6 +15,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+
 /**
  * Class.
  *
@@ -226,7 +227,27 @@ public class StartUITest {
 
         assertNull(tracker.findById(id));
     }
+    /**
+     * Test for add comments to Item.
+     * @throws Exception Exception.
+     */
+    @Test
+    public void testWhenUserAddComment() throws Exception {
+        Item task = new Task("task", "desc");
 
+        tracker.add(task);
 
+        String id = tracker.findAll()[0].getId();
+
+        Input input = new StubInput(new String[] {"7", id, "comment1", "y"});
+
+        final MenuTracker.IPrinter printer = mock(MenuTracker.IPrinter.class);
+
+        new StartUI(input, tracker, printer).init();
+
+        task.getComments().arrayOutComment(printer);
+
+        verify(printer).println("comment1");
+    }
 
 }
