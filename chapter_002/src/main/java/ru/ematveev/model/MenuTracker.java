@@ -216,10 +216,10 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker, IPrinter printer) {
             String name = input.ask("Please, enter the task's name: ");
             Item item = tracker.findByName(name);
-            System.out.println(
-                    String.format("%s, %s, %s", item.getId(), item.getName(), item.getDescription())
+            printer.println(
+                    String.format("%s. %s. %s", item.getId(), item.getName(), item.getDescription())
             );
-            item.getComments().arrayOutComment();
+            item.getComments().arrayOutComment(printer);
         }
 
         /**
@@ -256,10 +256,10 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker, IPrinter printer) {
             String id = input.ask("Please, enter the task's id: ");
             Item item = tracker.findById(id);
-            System.out.println(
-                    String.format("%s, %s, %s", item.getId(), item.getName(), item.getDescription())
+            printer.println(
+                    String.format("%s. %s. %s", item.getId(), item.getName(), item.getDescription())
             );
-            item.getComments().arrayOutComment();
+            item.getComments().arrayOutComment(printer);
         }
 
         /**
