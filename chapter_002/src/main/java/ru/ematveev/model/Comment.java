@@ -33,7 +33,7 @@ public class Comment {
      * Method for the output to the console.
      * @param printer printer.
      */
-    public void arrayOutComment(MenuTracker.IPrinter printer) {
+    public void arrayOutComment(IPrinter printer) {
         for (String comment : arrayComment) {
             if (comment != null) {
                 printer.println(comment);
