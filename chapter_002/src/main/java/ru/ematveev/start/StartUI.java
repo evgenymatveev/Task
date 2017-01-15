@@ -1,5 +1,6 @@
 package ru.ematveev.start;
 
+import ru.ematveev.model.IPrinter;
 import ru.ematveev.model.MenuTracker;
 
 /**
@@ -20,7 +21,7 @@ public class StartUI {
     /**
      * Used the IPrinter.
      */
-    private MenuTracker.IPrinter printer;
+    private IPrinter printer;
 
 
     /**
@@ -29,7 +30,7 @@ public class StartUI {
      * @param tracker tracker.
      * @param printer printer.
      */
-    public StartUI(Input input, Tracker tracker, MenuTracker.IPrinter printer) {
+    public StartUI(Input input, Tracker tracker, IPrinter printer) {
         this.input = input;
         this.tracker = tracker;
         this.printer = printer;
@@ -54,7 +55,7 @@ public class StartUI {
     public static void main(String[] args) {
         Tracker tracker = new Tracker();
         Input input = new ConsoleInput();
-        MenuTracker.IPrinter printer = new MenuTracker.IPrinter() {
+        IPrinter printer = new IPrinter() {
             @Override
             public void println(String text) {
                 System.out.println(text);
