@@ -1,5 +1,6 @@
 package ru.ematveev.start;
 
+import ru.ematveev.model.IPrinter;
 import ru.ematveev.model.MenuTracker;
 
 /**
@@ -22,7 +23,7 @@ public interface UserAction {
      * @param tracker tracker.
      * @param printer printer.
      */
-    void execute(Input input, Tracker tracker, MenuTracker.IPrinter printer);
+    void execute(Input input, Tracker tracker, IPrinter printer);
 
     /**
      * Base method for output on the screen menu items.
