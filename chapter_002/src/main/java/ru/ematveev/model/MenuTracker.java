@@ -77,16 +77,7 @@ public class MenuTracker {
         }
     }
 
-    /**
-     * Interface IPrinter.
-     */
-    public interface IPrinter {
-        /**
-         * Method for realization.
-         * @param text text.
-         */
-        void println(String text);
-    }
+
     /**
      * Inner class of the class MenuTracker implements the interface UserAction.
      */
