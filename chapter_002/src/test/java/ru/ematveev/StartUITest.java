@@ -2,6 +2,7 @@ package ru.ematveev;
 
 import org.junit.Before;
 import org.junit.Test;
+import ru.ematveev.model.IPrinter;
 import ru.ematveev.model.Item;
 import ru.ematveev.model.MenuTracker;
 import ru.ematveev.model.Task;
@@ -45,7 +46,7 @@ public class StartUITest {
      public void testWhenUserAddNewItem() throws Exception {
         Input input = new StubInput(new String[] {"0", "task", "desc", "y"});
 
-        MenuTracker.IPrinter printer = new MenuTracker.IPrinter() {
+        IPrinter printer = new IPrinter() {
             @Override
             public void println(String text) {
                 System.out.println(text);
@@ -70,7 +71,7 @@ public class StartUITest {
 
         Input input = new StubInput(new String[] {"1", "y"});
 
-        final MenuTracker.IPrinter printer = mock(MenuTracker.IPrinter.class);
+        final IPrinter printer = mock(IPrinter.class);
 
         new StartUI(input, tracker, printer).init();
 
@@ -93,7 +94,7 @@ public class StartUITest {
 
         Input input = new StubInput(new String[] {"2", id, "task1", "desc1", "y"});
 
-        MenuTracker.IPrinter printer = new MenuTracker.IPrinter() {
+        IPrinter printer = new IPrinter() {
             @Override
             public void println(String text) {
                 System.out.println(text);
@@ -122,7 +123,7 @@ public class StartUITest {
 
         Input input = new StubInput(new String[] {"3", id, "y"});
 
-        MenuTracker.IPrinter printer = new MenuTracker.IPrinter() {
+        IPrinter printer = new IPrinter() {
             @Override
             public void println(String text) {
                 System.out.println(text);
@@ -146,7 +147,7 @@ public class StartUITest {
 
         Input input = new StubInput(new String[] {"4", "task", "y"});
 
-        final MenuTracker.IPrinter printer = mock(MenuTracker.IPrinter.class);
+        final IPrinter printer = mock(IPrinter.class);
 
         new StartUI(input, tracker, printer).init();
 
@@ -170,7 +171,7 @@ public class StartUITest {
 
         Input input = new StubInput(new String[] {"5", id, "y"});
 
-        final MenuTracker.IPrinter printer = mock(MenuTracker.IPrinter.class);
+        final IPrinter printer = mock(IPrinter.class);
 
         new StartUI(input, tracker, printer).init();
 
@@ -192,7 +193,7 @@ public class StartUITest {
 
         Input input = new StubInput(new String[] {"6", "n", "y"});
 
-        MenuTracker.IPrinter printer = new MenuTracker.IPrinter() {
+        IPrinter printer = new IPrinter() {
             @Override
             public void println(String text) {
                 System.out.println(text);
@@ -217,7 +218,7 @@ public class StartUITest {
 
         Input input = new StubInput(new String[] {"6", "y", "y"});
 
-        MenuTracker.IPrinter printer = new MenuTracker.IPrinter() {
+        IPrinter printer = new IPrinter() {
             @Override
             public void println(String text) {
                 System.out.println(text);
@@ -241,7 +242,7 @@ public class StartUITest {
 
         Input input = new StubInput(new String[] {"7", id, "comment1", "y"});
 
-        final MenuTracker.IPrinter printer = mock(MenuTracker.IPrinter.class);
+        final IPrinter printer = mock(IPrinter.class);
 
         new StartUI(input, tracker, printer).init();
 
