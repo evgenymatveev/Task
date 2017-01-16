@@ -1,7 +1,7 @@
 package ru.ematveev.start;
 
 import ru.ematveev.model.IPrinter;
-import ru.ematveev.model.MenuTracker;
+
 
 /**
  * Interface for create the key, format string and prompting the user information of the application and adds it to the.
