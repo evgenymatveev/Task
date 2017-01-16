@@ -34,7 +34,6 @@ public class Item {
      * default constructor.
      */
     public Item() {
-
     }
     /**
      * constructor for the three parameters.
@@ -116,14 +115,25 @@ public class Item {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Item)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Item)) {
+            return false;
+        }
         Item item = (Item) o;
-        return create == item.create &&
-                Objects.equals(name, item.name) &&
-                Objects.equals(description, item.description) &&
-                Objects.equals(id, item.id) &&
-                Objects.equals(comments, item.comments);
+        return create == item.create
+                &&
+                Objects.equals(name, item.name)
+                &&
+                Objects.equals(description, item.description)
+                &&
+                Objects.equals(id, item.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, create, id);
     }
 }
 
