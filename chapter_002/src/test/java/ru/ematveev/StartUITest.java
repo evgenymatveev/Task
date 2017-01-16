@@ -4,13 +4,13 @@ import org.junit.Before;
 import org.junit.Test;
 import ru.ematveev.model.IPrinter;
 import ru.ematveev.model.Item;
-import ru.ematveev.model.MenuTracker;
 import ru.ematveev.model.Task;
 import ru.ematveev.start.Input;
 import ru.ematveev.start.StartUI;
 import ru.ematveev.start.StubInput;
 import ru.ematveev.start.Tracker;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
@@ -46,17 +46,14 @@ public class StartUITest {
      public void testWhenUserAddNewItem() throws Exception {
         Input input = new StubInput(new String[] {"0", "task", "desc", "y"});
 
-        IPrinter printer = new IPrinter() {
-            @Override
-            public void println(String text) {
-                System.out.println(text);
-            }
-        };
+        IPrinter printer = text -> System.out.println(text);
 
         new StartUI(input, tracker, printer).init();
 
-        assertThat(tracker.findAll()[0].getName(), is("task"));
-        assertThat(tracker.findAll()[0].getDescription(), is("desc"));
+        String expectedValue = tracker.findByName("task").getId();
+
+
+        assertThat(tracker.findAll()[0].getId(), is(expectedValue));
     }
 
     /**
@@ -94,19 +91,22 @@ public class StartUITest {
 
         Input input = new StubInput(new String[] {"2", id, "task1", "desc1", "y"});
 
-        IPrinter printer = new IPrinter() {
-            @Override
-            public void println(String text) {
-                System.out.println(text);
-            }
-        };
+        IPrinter printer = text -> System.out.println(text);
+
+//        IPrinter printer = new IPrinter() {
+//            @Override
+//            public void println(String text) {
+//                System.out.println(text);
+//            }
+//        };
 
         new StartUI(input, tracker, printer).init();
 
-        assertThat(task.getId(), is(id));
-        assertThat(tracker.findAll()[0].getName(), is("task1"));
-        assertThat(tracker.findAll()[0].getDescription(), is("desc1"));
+        Item task2 = new Task("task1", "desc1");
 
+        task2.setId(id);
+
+        assertEquals(tracker.findById(id), task2);
     }
 
     /**
@@ -123,12 +123,8 @@ public class StartUITest {
 
         Input input = new StubInput(new String[] {"3", id, "y"});
 
-        IPrinter printer = new IPrinter() {
-            @Override
-            public void println(String text) {
-                System.out.println(text);
-            }
-        };
+        IPrinter printer = text -> System.out.println(text);
+
         new StartUI(input, tracker, printer).init();
 
         assertNull(tracker.findById(id));
@@ -193,12 +189,8 @@ public class StartUITest {
 
         Input input = new StubInput(new String[] {"6", "n", "y"});
 
-        IPrinter printer = new IPrinter() {
-            @Override
-            public void println(String text) {
-                System.out.println(text);
-            }
-        };
+        IPrinter printer = text -> System.out.println(text);
+
         new StartUI(input, tracker, printer).init();
 
         assertThat(tracker.findAll()[0].getName(), is("task"));
@@ -218,12 +210,8 @@ public class StartUITest {
 
         Input input = new StubInput(new String[] {"6", "y", "y"});
 
-        IPrinter printer = new IPrinter() {
-            @Override
-            public void println(String text) {
-                System.out.println(text);
-            }
-        };
+        IPrinter printer = text -> System.out.println(text);
+
         new StartUI(input, tracker, printer).init();
 
         assertNull(tracker.findById(id));
