@@ -1,5 +1,7 @@
 package ru.ematveev.model;
 
+import java.util.Objects;
+
 /**
  * Сlass Item for create the item with three enter option .
  * @author Matveev Evgeny.
@@ -110,6 +112,18 @@ public class Item {
      */
     public Comment getComments() {
         return comments;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Item)) return false;
+        Item item = (Item) o;
+        return create == item.create &&
+                Objects.equals(name, item.name) &&
+                Objects.equals(description, item.description) &&
+                Objects.equals(id, item.id) &&
+                Objects.equals(comments, item.comments);
     }
 }
 
