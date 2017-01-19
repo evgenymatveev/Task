@@ -31,19 +31,4 @@ public class Paint {
     public void draw(Shape shape) {
         iPrinter.println(shape.pic());
     }
-
-    /**
-     * Method start the program.
-     * @param args args.
-     */
-
-    public static void main(String[] args) {
-        IPrinter iPrinter = text -> System.out.println(text);
-        Shape shape = new QuadreShape(7);
-        Shape shape1 = new TriangleShape(7);
-        Paint paint = new Paint(iPrinter);
-
-        paint.draw(shape);
-        paint.draw(shape1);
-    }
 }
