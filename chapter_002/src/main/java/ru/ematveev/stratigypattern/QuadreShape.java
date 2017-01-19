@@ -9,30 +9,32 @@ package ru.ematveev.stratigypattern;
  */
 public class QuadreShape implements Shape {
     /**
-     * Method pic() create square.
-     * @param n n.
-     * @return String.
+     * Number.
      */
-    public String pic(int n) {
+    private int n;
+
+    /**
+     * Constuctor.
+     * @param n n.
+     */
+    public QuadreShape(int n) {
+        this.n = n;
+    }
+    public String pic() {
         String result = "";
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (i == 0 || i == (n - 1) || j == 0 || j == (n - 1)) {
-//                    System.out.print("x");
-//                    System.out.print(" ");
                     result = result + "x";
                     result = result + " ";
                 } else {
-//                    System.out.print("@ ");
                     result = result + "@ ";
                 }
             }
-//            System.out.println();
             result = result + "\n";
         }
         return result;
     }
-
 }
 
 

@@ -13,5 +13,5 @@ public interface Shape {
      * @param n n.
      * @return String.
      */
-    String pic(int n);
+    String pic();
 }

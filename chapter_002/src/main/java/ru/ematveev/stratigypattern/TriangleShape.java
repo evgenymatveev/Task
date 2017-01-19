@@ -9,11 +9,24 @@ package ru.ematveev.stratigypattern;
  */
 public class TriangleShape implements Shape {
     /**
+     * Number.
+     */
+    private int n;
+
+    /**
+     * Constructor.
+     * @param n n.
+     */
+    public TriangleShape(int n) {
+        this.n = n;
+    }
+
+    /**
      * Method pic() create triangle.
      * @param n n.
      * @return String.
      */
-    public String pic(int n) {
+    public String pic() {
         String result = "";
         int x = 0;
         for (int i = n; i > 0; i--) {

@@ -15,10 +15,10 @@ public class Paint {
      */
 
     private Shape shape;
-    /**
-     * Number.
-     */
-    private int n;
+//    /**
+//     * Number.
+//     */
+//    private int n;
     /**
      * Iprinter for output to console.
      */
@@ -40,8 +40,8 @@ public class Paint {
      * @param shape shape.
      * @param n n.
      */
-    public void draw(Shape shape, int n) {
-        iPrinter.println(shape.pic(n));
+    public void draw(Shape shape) {
+        iPrinter.println(shape.pic());
     }
 
     /**
@@ -51,12 +51,13 @@ public class Paint {
 
     public static void main(String[] args) {
         IPrinter iPrinter = text -> System.out.println(text);
-        Shape shape = new QuadreShape();
-        TriangleShape triangleShape = new TriangleShape();
-        QuadreShape quadreShape = new QuadreShape();
+        Shape shape = new QuadreShape(7);
+        Shape shape1 = new TriangleShape(7);
+//        TriangleShape triangleShape = new TriangleShape(7);
+//        QuadreShape quadreShape = new QuadreShape(7);
         Paint paint = new Paint(shape, iPrinter);
 
-        paint.draw(quadreShape, 7);
-        paint.draw(triangleShape, 6);
+        paint.draw(shape);
+        paint.draw(shape1);
     }
 }
