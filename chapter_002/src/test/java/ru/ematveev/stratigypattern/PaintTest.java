@@ -34,10 +34,10 @@ public class PaintTest {
      */
     @Test
     public void testDrawWhenDrawinTheQuadre() throws Exception {
-        QuadreShape quadreShape = new QuadreShape();
-        Paint paint = new Paint(quadreShape, iPrinter);
+        Shape shape = new QuadreShape();
+        Paint paint = new Paint(shape, iPrinter);
 
-        paint.draw(quadreShape, 2);
+        paint.draw(shape, 2);
 
         String expectedValue = "x " + "x " + "\n" + "x " + "x " + "\n";
 
@@ -49,10 +49,10 @@ public class PaintTest {
      */
     @Test
     public void testDrawWhenDrawinTheTriangle() throws Exception {
-        TriangleShape triangleShape = new TriangleShape();
-        Paint paint = new Paint(triangleShape, iPrinter);
+        Shape shape1 = new TriangleShape();
+        Paint paint = new Paint(shape1, iPrinter);
 
-        paint.draw(triangleShape, 1);
+        paint.draw(shape1, 1);
 
         String expectedValue = " /" + "\\" + "\n" + "/__\\";
 
