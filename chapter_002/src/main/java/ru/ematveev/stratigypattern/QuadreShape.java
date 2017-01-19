@@ -8,16 +8,10 @@ package ru.ematveev.stratigypattern;
  * @since 18.01.17.
  */
 public class QuadreShape implements Shape {
-//    private int n;
-//
-//    public QuadreShape(int n) {
-//        this.n = n;
-//    }
-
     /**
      * Method pic() create square.
-     *
-     * @return String;
+     * @param n n.
+     * @return String.
      */
     public String pic(int n) {
         String result = "";

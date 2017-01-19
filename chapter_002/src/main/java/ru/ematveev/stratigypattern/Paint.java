@@ -16,9 +16,12 @@ public class Paint {
 
     private Shape shape;
     /**
-     * Iprinter for output to console.
+     * Number.
      */
     private int n;
+    /**
+     * Iprinter for output to console.
+     */
     private IPrinter iPrinter;
 
     /**
@@ -35,6 +38,7 @@ public class Paint {
     /**
      * Method output to console the figures.
      * @param shape shape.
+     * @param n n.
      */
     public void draw(Shape shape, int n) {
         iPrinter.println(shape.pic(n));
