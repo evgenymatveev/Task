@@ -13,26 +13,31 @@ public class Paint {
     /**
      * Interface Shape connection.
      */
+
     private Shape shape;
     /**
      * Iprinter for output to console.
      */
+    private int n;
     private IPrinter iPrinter;
 
     /**
-     * Setter for Shape.
+     * Constructor.
      * @param shape shape.
+     * @param iPrinter iPrinter.
      */
-    public void setShape(Shape shape) {
+
+    public Paint(Shape shape, IPrinter iPrinter) {
         this.shape = shape;
+        this.iPrinter = iPrinter;
     }
 
     /**
-     * Method that prints to the console figures.
-     * @param iPrinter iPrinter.
+     * Method output to console the figures.
+     * @param shape shape.
      */
-    public void draw(IPrinter iPrinter) {
-        iPrinter.println(shape.pic());
+    public void draw(Shape shape, int n) {
+        iPrinter.println(shape.pic(n));
     }
 
     /**
@@ -41,22 +46,13 @@ public class Paint {
      */
 
     public static void main(String[] args) {
-        IPrinter iPrinter = new IPrinter() {
-            @Override
-            public void println(String text) {
-                System.out.println(text);
-            }
-        };
-        Paint paint = new Paint();
-
-        QuadreShape quadreShape = new QuadreShape();
-        paint.setShape(quadreShape);
-        paint.draw(iPrinter);
-
+        IPrinter iPrinter = text -> System.out.println(text);
+        Shape shape = new QuadreShape();
         TriangleShape triangleShape = new TriangleShape();
-        paint.setShape(triangleShape);
-        paint.draw(iPrinter);
+        QuadreShape quadreShape = new QuadreShape();
+        Paint paint = new Paint(shape, iPrinter);
 
-
+        paint.draw(quadreShape, 7);
+        paint.draw(triangleShape, 6);
     }
 }
