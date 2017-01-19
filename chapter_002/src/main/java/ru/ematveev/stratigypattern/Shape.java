@@ -12,5 +12,5 @@ public interface Shape {
      * The base method to create the figures.
      * @return String.
      */
-    String pic();
+    String pic(int n);
 }
