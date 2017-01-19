@@ -20,6 +20,10 @@ public class QuadreShape implements Shape {
     public QuadreShape(int n) {
         this.n = n;
     }
+    /**
+     * Method pic() create triangle.
+     * @return String.
+     */
     public String pic() {
         String result = "";
         for (int i = 0; i < n; i++) {

@@ -10,7 +10,6 @@ package ru.ematveev.stratigypattern;
 public interface Shape {
     /**
      * The base method to create the figures.
-     * @param n n.
      * @return String.
      */
     String pic();

@@ -23,7 +23,6 @@ public class TriangleShape implements Shape {
 
     /**
      * Method pic() create triangle.
-     * @param n n.
      * @return String.
      */
     public String pic() {
