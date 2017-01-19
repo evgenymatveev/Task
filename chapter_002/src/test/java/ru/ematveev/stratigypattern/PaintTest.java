@@ -34,17 +34,12 @@ public class PaintTest {
      */
     @Test
     public void testDrawWhenDrawinTheQuadre() throws Exception {
-        Paint paint = new Paint();
         QuadreShape quadreShape = new QuadreShape();
-        paint.setShape(quadreShape);
-        paint.draw(iPrinter);
+        Paint paint = new Paint(quadreShape, iPrinter);
 
-        String expectedValue = "\n" + " __________"
-                                + "\n" + "|          |"
-                                + "\n" + "|          |"
-                                + "\n" + "|          |"
-                                + "\n" + "|          |"
-                                + "\n" + "|__________|";
+        paint.draw(quadreShape, 2);
+
+        String expectedValue = "x " + "x " + "\n" + "x " + "x " + "\n";
 
         verify(iPrinter).println(expectedValue);
     }
@@ -54,19 +49,13 @@ public class PaintTest {
      */
     @Test
     public void testDrawWhenDrawinTheTriangle() throws Exception {
-        Paint paint = new Paint();
         TriangleShape triangleShape = new TriangleShape();
-        paint.setShape(triangleShape);
-        paint.draw(iPrinter);
+        Paint paint = new Paint(triangleShape, iPrinter);
 
-        String expectedValue = "     /\\"
-                + "\n" + "    /  \\"
-                + "\n" + "   /    \\"
-                + "\n" + "  /      \\"
-                + "\n" + " /        \\"
-                + "\n" + "/__________\\";
+        paint.draw(triangleShape, 1);
+
+        String expectedValue = " /" + "\\" + "\n" + "/__\\";
 
         verify(iPrinter).println(expectedValue);
     }
-
 }
