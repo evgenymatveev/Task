@@ -18,7 +18,6 @@ public class TriangleShape implements Shape {
         int x = 0;
         for (int i = n; i > 0; i--) {
             for (int j = i; j > 0; j--) {
-                //System.out.print(" ");
                 result = result + " ";
             }
             result = result + "/";
