@@ -11,34 +11,22 @@ import ru.ematveev.model.IPrinter;
  */
 public class Paint {
     /**
-     * Interface Shape connection.
-     */
-
-    private Shape shape;
-//    /**
-//     * Number.
-//     */
-//    private int n;
-    /**
      * Iprinter for output to console.
      */
     private IPrinter iPrinter;
 
     /**
      * Constructor.
-     * @param shape shape.
      * @param iPrinter iPrinter.
      */
 
-    public Paint(Shape shape, IPrinter iPrinter) {
-        this.shape = shape;
+    public Paint(IPrinter iPrinter) {
         this.iPrinter = iPrinter;
     }
 
     /**
      * Method output to console the figures.
      * @param shape shape.
-     * @param n n.
      */
     public void draw(Shape shape) {
         iPrinter.println(shape.pic());
@@ -53,9 +41,7 @@ public class Paint {
         IPrinter iPrinter = text -> System.out.println(text);
         Shape shape = new QuadreShape(7);
         Shape shape1 = new TriangleShape(7);
-//        TriangleShape triangleShape = new TriangleShape(7);
-//        QuadreShape quadreShape = new QuadreShape(7);
-        Paint paint = new Paint(shape, iPrinter);
+        Paint paint = new Paint(iPrinter);
 
         paint.draw(shape);
         paint.draw(shape1);
