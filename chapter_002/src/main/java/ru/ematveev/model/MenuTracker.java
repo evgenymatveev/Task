@@ -33,6 +33,8 @@ public class MenuTracker {
      */
     private UserAction[] actions = new UserAction[x];
 
+    private int[] ranges;
+
     /**
      * Constructor MenuTracker.
      * @param input input.
@@ -43,6 +45,7 @@ public class MenuTracker {
         this.input = input;
         this.tracker = tracker;
         this.printer = printer;
+        ranges = new int[actions.length];
     }
 
     /**
@@ -58,6 +61,15 @@ public class MenuTracker {
         this.actions[6] = new DeleteAllItem();
         this.actions[7] = new AddCommentForItem();
     }
+
+
+    public int[] numberItems() {
+        for(int i = 0; i < actions.length; i++) {
+            this.ranges[i] = i;
+        }
+        return this.ranges;
+    }
+
     /**
      * Method the key number calling method execute().
      * @param key key.
