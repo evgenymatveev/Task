@@ -21,7 +21,7 @@ public class ConsoleInput implements Input {
         System.out.print(question);
         return scanner.nextLine();
     }
-    public int ask(String question, int[] ranges)  throws MenuOutException {
+    public int ask(String question, int[] ranges) throws MenuOutException{
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;
         for(int value : ranges){

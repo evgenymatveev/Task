@@ -7,7 +7,7 @@ package ru.ematveev.start;
  * @version 1.0.
  * @since 26.01.17.
  */
-public class MenuOutException extends Exception{
+public class MenuOutException extends RuntimeException{
     public MenuOutException(String msg) {
         super(msg);
     }
