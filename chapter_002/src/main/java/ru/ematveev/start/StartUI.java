@@ -23,12 +23,12 @@ public class StartUI {
      */
     private IPrinter printer;
 
-
     /**
      * Constructor.
      * @param input input.
      * @param tracker tracker.
      * @param printer printer.
+     * @param ranges
      */
     public StartUI(Input input, Tracker tracker, IPrinter printer) {
         this.input = input;
@@ -44,8 +44,8 @@ public class StartUI {
         menu.fillAction();
         do {
             menu.show();
-            int key = Integer.valueOf(input.ask("Select:"));
-            menu.select(key);
+            int[] resultmenu = menu.numberItems();
+            menu.select(input.ask("Select:", resultmenu));
         } while (!"y".equals(this.input.ask("Exit(y):")));
     }
     /**
@@ -54,7 +54,7 @@ public class StartUI {
      */
     public static void main(String[] args) {
         Tracker tracker = new Tracker();
-        Input input = new ConsoleInput();
+        Input input = new ValidateInput();
         IPrinter printer = new IPrinter() {
             @Override
             public void println(String text) {
