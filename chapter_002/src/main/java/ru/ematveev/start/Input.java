@@ -14,4 +14,5 @@ public interface Input {
      * @return String
      */
     String ask(String question);
+    int ask(String question, int[] ranges) throws MenuOutException;
 }
