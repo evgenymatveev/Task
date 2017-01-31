@@ -32,7 +32,9 @@ public class MenuTracker {
      * Create array actions for storage the task.
      */
     private UserAction[] actions = new UserAction[x];
-
+    /**
+     * Array numbers for item menu.
+     */
     private int[] ranges;
 
     /**
@@ -45,7 +47,7 @@ public class MenuTracker {
         this.input = input;
         this.tracker = tracker;
         this.printer = printer;
-        ranges = new int[actions.length];
+        ranges = new int[x];
     }
 
     /**
@@ -62,9 +64,12 @@ public class MenuTracker {
         this.actions[7] = new AddCommentForItem();
     }
 
-
+    /**
+     * Method for create the array.
+     * @return array int[];
+     */
     public int[] numberItems() {
-        for(int i = 0; i < actions.length; i++) {
+        for (int i = 0; i < actions.length; i++) {
             this.ranges[i] = i;
         }
         return this.ranges;

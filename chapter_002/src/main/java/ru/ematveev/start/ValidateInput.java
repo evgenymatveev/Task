@@ -1,13 +1,19 @@
 package ru.ematveev.start;
 
 /**
- * Class
+ * Class ValidateInput extends ConsoleInput.
  *
  * @author Matveev Evgeny.
  * @version 1.0.
  * @since 26.01.17.
  */
 public class ValidateInput extends ConsoleInput {
+    /**
+     * Method ask() for question.
+     * @param question question.
+     * @param ranges ranges.
+     * @return int key.
+     */
     public int ask(String question, int[] ranges) {
         boolean invalide = true;
         int value = -1;

@@ -4,10 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 import ru.ematveev.model.IPrinter;
 import ru.ematveev.model.Item;
-import ru.ematveev.model.MenuTracker;
 import ru.ematveev.model.Task;
-import ru.ematveev.start.*;
-
+import ru.ematveev.start.Tracker;
+import ru.ematveev.start.StubInput;
+import ru.ematveev.start.Input;
+import ru.ematveev.start.StartUI;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -47,10 +48,7 @@ public class StartUITest {
         IPrinter printer = text -> System.out.println(text);
 
         new StartUI(input, tracker, printer).init();
-
         String expectedValue = tracker.findByName("task").getId();
-
-
         assertThat(tracker.findAll()[0].getId(), is(expectedValue));
     }
 

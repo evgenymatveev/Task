@@ -10,7 +10,9 @@ import java.util.Scanner;
  * @since 03.01.17.
  */
 public class ConsoleInput implements Input {
-
+    /**
+     * Scanner.
+     */
     private Scanner scanner = new Scanner(System.in);
     /**
      * Method for the questions to the user.
@@ -21,11 +23,19 @@ public class ConsoleInput implements Input {
         System.out.print(question);
         return scanner.nextLine();
     }
-    public int ask(String question, int[] ranges) throws MenuOutException{
+
+    /**
+     * Method ask() for question.
+     * @param question question.
+     * @param ranges ranges.
+     * @return int key.
+     * @throws MenuOutException MenuOutException.
+     */
+    public int ask(String question, int[] ranges) throws MenuOutException {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;
-        for(int value : ranges){
-            if (value == key){
+        for (int value : ranges) {
+            if (value == key) {
                 exist = true;
                 break;
             }
