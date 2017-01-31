@@ -28,7 +28,6 @@ public class StartUI {
      * @param input input.
      * @param tracker tracker.
      * @param printer printer.
-     * @param ranges
      */
     public StartUI(Input input, Tracker tracker, IPrinter printer) {
         this.input = input;

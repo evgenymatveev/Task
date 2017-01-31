@@ -13,6 +13,8 @@ public class StubInput implements Input {
      */
     private String[] answers;
 
+
+
     /**
      * Count of answers.
      */
@@ -34,11 +36,6 @@ public class StubInput implements Input {
     public String ask(String question) {
         return answers[position++];
     }
-
-
-
-
-
 
     public int ask(String question, int[] ranges){
         return position;
