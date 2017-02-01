@@ -1,5 +1,6 @@
 package ru.ematveev.model;
 
+import ru.ematveev.start.BaseAction;
 import ru.ematveev.start.Input;
 import ru.ematveev.start.Tracker;
 import ru.ematveev.start.UserAction;
@@ -54,14 +55,14 @@ public class MenuTracker {
      * Method recording the task in the array.
      */
     public void fillAction() {
-        this.actions[0] = this.new AddItem();
-        this.actions[1] = this.new ShowItems();
-        this.actions[2] = this.new UpdateItem();
-        this.actions[3] = this.new DeleteItem();
-        this.actions[4] = new FindByNameItem();
-        this.actions[5] = new FindByIdItem();
-        this.actions[6] = new DeleteAllItem();
-        this.actions[7] = new AddCommentForItem();
+        this.actions[0] = this.new AddItem("AddItem");
+        this.actions[1] = this.new ShowItems("ShowItems");
+        this.actions[2] = this.new UpdateItem("UpdateItem");
+        this.actions[3] = this.new DeleteItem("DeleteItem");
+        this.actions[4] = new FindByNameItem("FindByNameItem");
+        this.actions[5] = new FindByIdItem("FindByIdItem");
+        this.actions[6] = new DeleteAllItem("DeleteAllItem");
+        this.actions[7] = new AddCommentForItem("AddCommentForItem");
     }
 
     /**
@@ -98,7 +99,14 @@ public class MenuTracker {
     /**
      * Inner class of the class MenuTracker implements the interface UserAction.
      */
-    private class AddItem implements UserAction {
+    private class AddItem extends BaseAction {
+        /**
+         * Constructor.
+         * @param name name.
+         */
+        AddItem(String name) {
+            super(name);
+        }
         /**
          * The method returns the number key.
          * @return number 0.
@@ -118,20 +126,19 @@ public class MenuTracker {
             String desc = input.ask("Please, enter the task's desc: ");
             tracker.add(new Task(name, desc));
         }
-
-        /**
-         * Method for output on the screen menu items.
-         * @return String.
-         */
-        public String info() {
-            return String.format("%s. %s", this.key(), "Add the new item.");
-        }
     }
 
     /**
      * Class ShowItems - implement the interface UserAction for show the items.
      */
-    private class ShowItems implements UserAction {
+    private class ShowItems extends BaseAction {
+        /**
+         * Constructor.
+         * @param name name.
+         */
+        ShowItems(String name) {
+            super(name);
+        }
         /**
          * The method returns the number key.
          * @return number 1.
@@ -153,19 +160,18 @@ public class MenuTracker {
                 );
             }
         }
-
-        /**
-         * Method for output on the screen all the items.
-         * @return String.
-         */
-        public String info() {
-            return String.format("%s. %s", this.key(), "Show all items.");
-        }
     }
     /**
      * Class DeleteItem - implement the interface UserAction for delete the item.
      */
-    private class DeleteItem implements UserAction {
+    private class DeleteItem extends BaseAction {
+        /**
+         * Constructor.
+         * @param name name.
+         */
+        DeleteItem(String name) {
+            super(name);
+        }
         /**
          * Number key for memu.
          */
@@ -189,20 +195,19 @@ public class MenuTracker {
             Item task = tracker.findById(id);
             tracker.delete(task);
         }
-
-        /**
-         * Method for output on the screen menu items.
-         * @return String.
-         */
-        public String info() {
-            return String.format("%s. %s", this.key(), "Delete the item.");
-        }
     }
 
     /**
      * Class findByNameItem - implement the interface UserAction for search the item named.
      */
-    private class FindByNameItem implements UserAction {
+    private class FindByNameItem extends BaseAction {
+        /**
+         * Constructor.
+         * @param name name.
+         */
+        FindByNameItem(String name) {
+            super(name);
+        }
         /**
          * Number key for memu.
          */
@@ -229,20 +234,19 @@ public class MenuTracker {
             );
             item.getComments().arrayOutComment(printer);
         }
-
-        /**
-         * Method for output on the screen menu items.
-         * @return String.
-         */
-        public String info() {
-            return String.format("%s. %s", this.key(), "Search the item named.");
-        }
     }
 
     /**
      * Class findByIdItem - implement the interface UserAction for search the item id.
      */
-    private class FindByIdItem implements UserAction {
+    private class FindByIdItem extends BaseAction {
+        /**
+         * Constructor.
+         * @param name name.
+         */
+        FindByIdItem(String name) {
+            super(name);
+        }
         /**
          * Number key for memu.
          */
@@ -269,19 +273,18 @@ public class MenuTracker {
             );
             item.getComments().arrayOutComment(printer);
         }
-
-        /**
-         * Method for output on the screen menu items.
-         * @return String.
-         */
-        public String info() {
-            return String.format("%s. %s", this.key(), "Search the item Id.");
-        }
     }
     /**
      * Class UpdateItem - implement the interface UserAction for update the item.
      */
-    private class UpdateItem implements UserAction {
+    private class UpdateItem extends BaseAction {
+        /**
+         * Constructor.
+         * @param name name.
+         */
+        UpdateItem(String name) {
+            super(name);
+        }
 
         /**
          * The method returns the number key.
@@ -304,19 +307,19 @@ public class MenuTracker {
             task.setId(id);
             tracker.update(task.getId(), task);
         }
-        /**
-         * Method for output on the screen menu items.
-         * @return String.
-         */
-        public String info() {
-            return String.format("%s. %s", this.key(), "Edit the item.");
-        }
     }
 
     /**
      * Class DeleteAllItem - implement the interface UserAction for delete all the item.
      */
-    private class DeleteAllItem implements UserAction {
+    private class DeleteAllItem extends BaseAction {
+        /**
+         * Constructor.
+         * @param name name.
+         */
+        DeleteAllItem(String name) {
+            super(name);
+        }
         /**
          * Number key for memu.
          */
@@ -341,19 +344,18 @@ public class MenuTracker {
                 tracker.deleteAll();
             }
         }
-
-        /**
-         * Method for output on the screen menu items.
-         * @return String.
-         */
-        public String info() {
-            return String.format("%s. %s", this.key(), "Delete all the item.");
-        }
     }
     /**
      * Class AddCommentForItem - implement the interface UserAction for add comment in the item.
      */
-    private class AddCommentForItem implements UserAction {
+    private class AddCommentForItem extends BaseAction {
+        /**
+         * Constructor.
+         * @param name name.
+         */
+        AddCommentForItem(String name) {
+            super(name);
+        }
         /**
          * Number key for memu.
          */
@@ -377,14 +379,6 @@ public class MenuTracker {
             Item item = tracker.findById(id);
             String comm = (input.ask("Please, enter comment for your Item: "));
             item.getComments().addComments(comm);
-        }
-
-        /**
-         * Method for output on the screen menu items.
-         * @return String.
-         */
-        public String info() {
-            return String.format("%s. %s", this.key(), "Add comment for the item.");
         }
     }
 }
