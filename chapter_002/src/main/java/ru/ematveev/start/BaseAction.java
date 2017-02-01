@@ -14,19 +14,23 @@ public abstract class BaseAction implements UserAction {
      * Name the position the menu.
      */
     private String name;
+    private int key;
 
     /**
      * Constructor.
      * @param name name.
      */
-    public BaseAction(String name) {
+    public BaseAction(String name, int key) {
         this.name = name;
+        this.key = key;
     }
     /**
      * Base the method returns the number key.
      * @return 0.
      */
-    public abstract int key();
+    public int key() {
+        return key;
+    }
 
     /**
      * Base the method prompting the user information of the application and adds it to the array.

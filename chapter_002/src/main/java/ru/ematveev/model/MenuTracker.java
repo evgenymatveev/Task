@@ -55,14 +55,14 @@ public class MenuTracker {
      * Method recording the task in the array.
      */
     public void fillAction() {
-        this.actions[0] = this.new AddItem("AddItem");
-        this.actions[1] = this.new ShowItems("ShowItems");
-        this.actions[2] = this.new UpdateItem("UpdateItem");
-        this.actions[3] = this.new DeleteItem("DeleteItem");
-        this.actions[4] = new FindByNameItem("FindByNameItem");
-        this.actions[5] = new FindByIdItem("FindByIdItem");
-        this.actions[6] = new DeleteAllItem("DeleteAllItem");
-        this.actions[7] = new AddCommentForItem("AddCommentForItem");
+        this.actions[0] = this.new AddItem("AddItem", 0);
+        this.actions[1] = this.new ShowItems("ShowItems", 1);
+        this.actions[2] = this.new UpdateItem("UpdateItem", 2);
+        this.actions[3] = this.new DeleteItem("DeleteItem", 3);
+        this.actions[4] = new FindByNameItem("FindByNameItem", 4);
+        this.actions[5] = new FindByIdItem("FindByIdItem", 5);
+        this.actions[6] = new DeleteAllItem("DeleteAllItem", 6);
+        this.actions[7] = new AddCommentForItem("AddCommentForItem", 7);
     }
 
     /**
@@ -104,15 +104,8 @@ public class MenuTracker {
          * Constructor.
          * @param name name.
          */
-        AddItem(String name) {
-            super(name);
-        }
-        /**
-         * The method returns the number key.
-         * @return number 0.
-         */
-        public int key() {
-            return 0;
+        AddItem(String name, int key) {
+            super(name, key);
         }
 
         /**
@@ -136,15 +129,8 @@ public class MenuTracker {
          * Constructor.
          * @param name name.
          */
-        ShowItems(String name) {
-            super(name);
-        }
-        /**
-         * The method returns the number key.
-         * @return number 1.
-         */
-        public int key() {
-            return 1;
+        ShowItems(String name, int key) {
+            super(name, key);
         }
 
         /**
@@ -169,19 +155,8 @@ public class MenuTracker {
          * Constructor.
          * @param name name.
          */
-        DeleteItem(String name) {
-            super(name);
-        }
-        /**
-         * Number key for memu.
-         */
-        private final int countKey = 3;
-        /**
-         * The method returns the number key.
-         * @return number 2.
-         */
-        public int key() {
-            return countKey;
+        DeleteItem(String name, int key) {
+            super(name, key);
         }
 
         /**
@@ -205,19 +180,8 @@ public class MenuTracker {
          * Constructor.
          * @param name name.
          */
-        FindByNameItem(String name) {
-            super(name);
-        }
-        /**
-         * Number key for memu.
-         */
-        private final int countKey = 4;
-        /**
-         * The method returns the number key.
-         * @return number 4.
-         */
-        public int key() {
-            return countKey;
+        FindByNameItem(String name, int key) {
+            super(name, key);
         }
 
         /**
@@ -244,19 +208,8 @@ public class MenuTracker {
          * Constructor.
          * @param name name.
          */
-        FindByIdItem(String name) {
-            super(name);
-        }
-        /**
-         * Number key for memu.
-         */
-        private final int countKey = 5;
-        /**
-         * The method returns the number key.
-         * @return number 5.
-         */
-        public int key() {
-            return countKey;
+        FindByIdItem(String name, int key) {
+            super(name, key);
         }
 
         /**
@@ -282,17 +235,11 @@ public class MenuTracker {
          * Constructor.
          * @param name name.
          */
-        UpdateItem(String name) {
-            super(name);
+        UpdateItem(String name, int key) {
+            super(name, key);
         }
 
-        /**
-         * The method returns the number key.
-         * @return number 2.
-         */
-        public int key() {
-            return 2;
-        }
+
         /**
          * The method prompting the user information of the application and update the item.
          * @param input input.
@@ -317,19 +264,8 @@ public class MenuTracker {
          * Constructor.
          * @param name name.
          */
-        DeleteAllItem(String name) {
-            super(name);
-        }
-        /**
-         * Number key for memu.
-         */
-        private final int countKey = 6;
-        /**
-         * The method returns the number key.
-         * @return number 2.
-         */
-        public int key() {
-            return countKey;
+        DeleteAllItem(String name, int key) {
+            super(name, key);
         }
 
         /**
@@ -353,19 +289,8 @@ public class MenuTracker {
          * Constructor.
          * @param name name.
          */
-        AddCommentForItem(String name) {
-            super(name);
-        }
-        /**
-         * Number key for memu.
-         */
-        private final int countKey = 7;
-        /**
-         * The method returns the number key.
-         * @return number 2.
-         */
-        public int key() {
-            return countKey;
+        AddCommentForItem(String name, int key) {
+            super(name, key);
         }
 
         /**
