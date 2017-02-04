@@ -1,6 +1,8 @@
 package model;
 
+import exception.FigureNotFoundException;
 import exception.ImpossibleMoveException;
+import exception.OccupiedWayException;
 
 /**
  * Class
@@ -10,17 +12,17 @@ import exception.ImpossibleMoveException;
  * @since 03.02.17.
  */
 public class Main {
-    public static void main(String[] args)  throws ImpossibleMoveException {
-        Figure elephant = new Elephant(new Cell(7, 5));
+    public static void main(String[] args) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
+        Cell p = new Cell(4, 4);
+        //Cell p1 = new Cell(5, 5);
+        Elephant elephant = new Elephant(p);
         Board board = new Board(elephant);
-        Cell cell = new Cell(4, 2);
-
+        Cell cell = new Cell(7, 1);
         try {
-            elephant.way(cell);
+            board.move(p, cell);
         }
-        catch (ImpossibleMoveException e) {
+        catch (OccupiedWayException e) {
             e.printStackTrace();
         }
-
     }
 }

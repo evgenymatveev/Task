@@ -8,4 +8,7 @@ package exception;
  * @since 02.02.17.
  */
 public class OccupiedWayException extends Exception {
+    public OccupiedWayException(String msg) {
+        super(msg);
+    }
 }
