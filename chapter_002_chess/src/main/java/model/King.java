@@ -21,7 +21,7 @@ public class King extends Figure {
         int dy = dist.getY();
         int px = position.getX();
         int py = position.getY();
-        if(Math.abs(px - dx) == 1 && Math.abs(py - dy) == 1 || (Math.abs(px - dx) == 0 && Math.abs(py - dy) == 1)
+        if (Math.abs(px - dx) == 1 && Math.abs(py - dy) == 1 || (Math.abs(px - dx) == 0 && Math.abs(py - dy) == 1)
                 || (Math.abs(py - dy) == 0 && Math.abs(px - dx) == 1)) {
             cells = createPath(dx, dy, px, py);
         } else {

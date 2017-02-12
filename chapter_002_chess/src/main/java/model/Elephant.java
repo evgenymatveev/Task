@@ -22,7 +22,7 @@ public class Elephant extends Figure {
         int dy = dist.getY();
         int px = position.getX();
         int py = position.getY();
-        if(Math.abs(px - dx) == Math.abs(py - dy)) {
+        if (Math.abs(px - dx) == Math.abs(py - dy)) {
             cells = createPath(dx, dy, px, py);
         } else {
             throw new ImpossibleMoveException("Так ходить нельзя");

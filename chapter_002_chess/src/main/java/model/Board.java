@@ -12,7 +12,7 @@ import exception.OccupiedWayException;
  * @since 02.02.17.
  */
 public class Board {
-    private Figure[] figures = new Figure[64]; // new Elephant(new Cell(x, y))
+    private Figure[] figures = new Figure[64];
 
     private int max = 7;
 
@@ -23,13 +23,14 @@ public class Board {
     public Board(Figure figure) {
         figures[position++] = figure;
     }
-        public boolean move(Cell source, Cell dist) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
 
-        if(!(dist.getX() > max || dist.getX() < min || dist.getY() > max || dist.getY() < min)) {
+    public boolean move(Cell source, Cell dist) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
+
+        if (!(dist.getX() > max || dist.getX() < min || dist.getY() > max || dist.getY() < min)) {
 
             for (Figure f : figures) {
                 if (source.equals(f.position)) {
-                            f.way(dist);
+                    f.way(dist);
                     return true;
                 } else {
                     throw new FigureNotFoundException("В ячейке нет фигуры!");

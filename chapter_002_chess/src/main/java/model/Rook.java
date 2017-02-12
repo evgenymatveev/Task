@@ -15,7 +15,7 @@ public class Rook extends Figure {
         int dy = dist.getY();
         int px = position.getX();
         int py = position.getY();
-        if((Math.abs(px - dx) == 0 && Math.abs(py - dy) != 0)
+        if ((Math.abs(px - dx) == 0 && Math.abs(py - dy) != 0)
                 || (Math.abs(py - dy) == 0 && Math.abs(px - dx) != 0)) {
 
             cells = createPath(dx, dy, px, py);

@@ -23,9 +23,9 @@ public class Horse extends Figure {
         int py = position.getY();
         int k = 0;
 
-        if(Math.abs(py - dy) == 2 && Math.abs(px - dx) == 1
+        if (Math.abs(py - dy) == 2 && Math.abs(px - dx) == 1
                 || Math.abs(py - dy) == 1 && Math.abs(px - dx) == 2) {
-            cells = new Cell[] {new Cell(dx, dy)};
+            cells = new Cell[]{new Cell(dx, dy)};
 
 
         } else {

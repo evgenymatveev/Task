@@ -16,6 +16,10 @@ public abstract class Figure {
         this.position = position;
     }
 
+//    public Figure(Cell position) {
+//        this.position = position;
+//    }
+
     public abstract Cell[] way(Cell dist) throws ImpossibleMoveException;
 
     public Cell[] createPath(int dx, int dy, int px, int py) {
@@ -23,13 +27,13 @@ public abstract class Figure {
         Cell[] a = new Cell[n];
         int k = 0;
 
-        int stepX = dx > px ? 1 : dx == px ? 0 : -1; //0
-        int stepY = dy > py ? 1 : dy == py ? 0 : -1; //-1
+        int stepX = dx > px ? 1 : dx == px ? 0 : -1;
+        int stepY = dy > py ? 1 : dy == py ? 0 : -1;
 
-        int tmpX = px; //4
-        int tmpY = py; //4
+        int tmpX = px;
+        int tmpY = py;
 
-        while(k < a.length) {
+        while (k < a.length) {
             tmpX = tmpX + stepX;
             tmpY = tmpY + stepY;
             a[k++] = new Cell(tmpX, tmpY);
