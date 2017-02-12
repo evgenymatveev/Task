@@ -23,13 +23,13 @@ public abstract class Figure {
         Cell[] a = new Cell[n];
         int k = 0;
 
-        int stepX = dx > px ? 1 : dx == px ? 0 : -1;
-        int stepY = dy > py ? 1 : dy == py ? 0 : -1;
+        int stepX = dx > px ? 1 : dx == px ? 0 : -1; //0
+        int stepY = dy > py ? 1 : dy == py ? 0 : -1; //-1
 
-        int tmpX = px;
-        int tmpY = py;
+        int tmpX = px; //4
+        int tmpY = py; //4
 
-        while(tmpX != dx || tmpY != dy) {
+        while(k < a.length) {
             tmpX = tmpX + stepX;
             tmpY = tmpY + stepY;
             a[k++] = new Cell(tmpX, tmpY);

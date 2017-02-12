@@ -13,11 +13,16 @@ import exception.OccupiedWayException;
  */
 public class Main {
     public static void main(String[] args) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
+//        Cell p = new Cell(4, 4);
+//        Elephant elephant = new Elephant(p);
+//        Board board = new Board(elephant);
+//        Cell cell = new Cell(7, 1);
+
         Cell p = new Cell(4, 4);
-        //Cell p1 = new Cell(5, 5);
-        Elephant elephant = new Elephant(p);
-        Board board = new Board(elephant);
-        Cell cell = new Cell(7, 1);
+        Rook rook = new Rook(p);
+        Board board = new Board(rook);
+        Cell cell = new Cell(4, 0);
+
         try {
             board.move(p, cell);
         }

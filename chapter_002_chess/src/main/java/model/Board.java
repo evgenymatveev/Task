@@ -4,9 +4,6 @@ import exception.FigureNotFoundException;
 import exception.ImpossibleMoveException;
 import exception.OccupiedWayException;
 
-import java.util.Arrays;
-import java.util.Objects;
-
 /**
  * Class
  *
@@ -32,10 +29,8 @@ public class Board {
 
             for (Figure f : figures) {
                 if (source.equals(f.position)) {
-                    Elephant elephant = new Elephant(source);
-                    elephant.way(dist);
+                            f.way(dist);
                     return true;
-
                 } else {
                     throw new FigureNotFoundException("В ячейке нет фигуры!");
                 }
