@@ -5,25 +5,31 @@ import exception.ImpossibleMoveException;
 import exception.OccupiedWayException;
 
 /**
- * Class
- *
  * @author Matveev Evgeny.
- * @version 1.0.
- * @since 02.02.17.
  */
 public class Board {
     private Figure[] figures = new Figure[64];
-
     private int max = 7;
-
-    protected int min = 0;
-
+    private int min = 0;
     private int position = 0;
 
+    /**
+     * Board games.
+     * @param figure chess figures.
+     */
     public Board(Figure figure) {
         figures[position++] = figure;
     }
 
+    /**
+     * Method check the correct coordinates.
+     * @param source position where is fugure.
+     * @param dist position where you need to put figure.
+     * @return boolean.
+     * @throws ImpossibleMoveException throws an exception ImpossibleMoveException if the coordinate is not correct.
+     * @throws OccupiedWayException OccupiedWayException.
+     * @throws FigureNotFoundException throws an exception FigureNotFoundException if if the cell has no figure.
+     */
     public boolean move(Cell source, Cell dist) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
 
         if (!(dist.getX() > max || dist.getX() < min || dist.getY() > max || dist.getY() < min)) {

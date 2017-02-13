@@ -2,14 +2,22 @@ package model;
 
 import exception.ImpossibleMoveException;
 
-public class Rook extends Figure {
+/**
+ * @author Matveev Evgeny.
+ */
 
+public class Rook extends Figure {
     Rook(Cell position) {
         super(position);
     }
 
-    public Cell[] cells;
-
+    private Cell[] cells;
+    /**
+     * Do the way for the figures.
+     * @param dist coordinates where to move.
+     * @return an array of coordinates where to move.
+     * @throws ImpossibleMoveException will throw Exception if the move can be done.
+     */
     public Cell[] way(Cell dist) throws ImpossibleMoveException {
         int dx = dist.getX();
         int dy = dist.getY();

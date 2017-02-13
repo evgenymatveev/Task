@@ -3,14 +3,9 @@ package model;
 import exception.ImpossibleMoveException;
 
 /**
- * Class
- *
  * @author Matveev Evgeny.
- * @version 1.0.
- * @since 12.02.17.
  */
 public class Pawn extends Figure {
-
     public Pawn(Cell position, Color color) {
         super(position);
         this.color = color;
@@ -22,8 +17,13 @@ public class Pawn extends Figure {
         super(position);
     }
 
-    public Cell[] cells;
-
+    private Cell[] cells;
+    /**
+     * Do the way for the figures.
+     * @param dist coordinates where to move.
+     * @return an array of coordinates where to move.
+     * @throws ImpossibleMoveException will throw Exception if the move can be done.
+     */
     public Cell[] way(Cell dist) throws ImpossibleMoveException {
         int dx = dist.getX();
         int dy = dist.getY();

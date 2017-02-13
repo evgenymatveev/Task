@@ -1,13 +1,14 @@
 package exception;
 
 /**
- * Class.
- *
+ * Create exception when there is no shape at the position.
  * @author Matveev Evgeny.
- * @version 1.0.
- * @since 02.02.17.
  */
 public class OccupiedWayException extends Exception {
+    /**
+     * Method exception the input of the receiving line.
+     * @param msg String which reports about a specific error (when the coordinate not true).
+     */
     public OccupiedWayException(String msg) {
         super(msg);
     }

@@ -3,25 +3,31 @@ package model;
 import exception.ImpossibleMoveException;
 
 /**
- * Class
- *
  * @author Matveev Evgeny.
- * @version 1.0.
- * @since 02.02.17.
  */
 public abstract class Figure {
-    final Cell position;
+    public Cell position;
 
     public Figure(Cell position) {
         this.position = position;
     }
 
-//    public Figure(Cell position) {
-//        this.position = position;
-//    }
-
+    /**
+     * Do the way for the figures.
+     * @param dist coordinates where to move.
+     * @return an array of coordinates where to move.
+     * @throws ImpossibleMoveException will throw Exception if the move can be done.
+     */
     public abstract Cell[] way(Cell dist) throws ImpossibleMoveException;
 
+    /**
+     * Creates an array of ways to move for figure.
+     * @param dx coordinate x where do you need to make a move.
+     * @param dy coordinate y where do you need to make a move.
+     * @param px coordinate x is base.
+     * @param py coordinate y is base.
+     * @return array.
+     */
     public Cell[] createPath(int dx, int dy, int px, int py) {
         int n = Math.abs(px - dx) > Math.abs(py - dy) ? Math.abs(px - dx) : Math.abs(py - dy);
         Cell[] a = new Cell[n];
@@ -39,5 +45,8 @@ public abstract class Figure {
             a[k++] = new Cell(tmpX, tmpY);
         }
         return a;
+    }
+    public Cell getPosition() {
+        return position;
     }
 }
