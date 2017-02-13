@@ -19,6 +19,7 @@ public abstract class BaseAction implements UserAction {
     /**
      * Constructor.
      * @param name name.
+     * @param key key.
      */
     public BaseAction(String name, int key) {
         this.name = name;
