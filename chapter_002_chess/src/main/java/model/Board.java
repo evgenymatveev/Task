@@ -48,7 +48,7 @@ public class Board {
         return false;
     }
     /**
-     * Add the figures on the Board
+     * Add the figures on the Board.
      * @param figure figure.
      */
     public void addFigures(Figure figure) {
