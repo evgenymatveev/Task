@@ -23,7 +23,8 @@ public class KingTest {
     public void setUp() throws Exception {
         cell = new Cell(4, 4);
         king = new King(cell);
-        board = new Board(king);
+        board = new Board();
+        board.addFigures(king);
     }
     /**
      * Test the method way when coordinates are true diagonally.

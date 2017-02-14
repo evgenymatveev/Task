@@ -22,7 +22,8 @@ public class PawnTest {
     public void testWayWhenColorWhitePositionBasicCoordinateIsTrue() throws Exception {
         cell = new Cell(3, 1);
         pawn = new Pawn(cell, Color.WHITE);
-        board = new Board(pawn);
+        board = new Board();
+        board.addFigures(pawn);
         Cell[] expectedValue = new Cell[]{new Cell(3, 2), new Cell(3, 3)};
         Cell[] actualValue = pawn.way(new Cell(3, 3));
 
@@ -36,7 +37,8 @@ public class PawnTest {
     public void testWayWhenColorBlackPositionBasicCoordinateIsTrue() throws Exception {
         cell = new Cell(6, 6);
         pawn = new Pawn(cell, Color.BLACK);
-        board = new Board(pawn);
+        board = new Board();
+        board.addFigures(pawn);
         Cell[] expectedValue = new Cell[]{new Cell(6, 5), new Cell(6, 4)};
         Cell[] actualValue = pawn.way(new Cell(6, 4));
 
@@ -50,7 +52,8 @@ public class PawnTest {
     public void testWayWhenColorWhitePositionNoBasicCoordinateIsTrue() throws Exception {
         cell = new Cell(5, 4);
         pawn = new Pawn(cell, Color.WHITE);
-        board = new Board(pawn);
+        board = new Board();
+        board.addFigures(pawn);
         Cell[] expectedValue = new Cell[]{new Cell(5, 5)};
         Cell[] actualValue = pawn.way(new Cell(5, 5));
 
@@ -64,7 +67,8 @@ public class PawnTest {
     public void testWayWhenColorBlackPositionNoBasicCoordinateIsTrue() throws Exception {
         cell = new Cell(1, 4);
         pawn = new Pawn(cell, Color.BLACK);
-        board = new Board(pawn);
+        board = new Board();
+        board.addFigures(pawn);
         Cell[] expectedValue = new Cell[]{new Cell(1, 3)};
         Cell[] actualValue = pawn.way(new Cell(1, 3));
 
@@ -78,7 +82,8 @@ public class PawnTest {
     public void testWayWhenColorWhitePositionNoBasicCoordinateIsFalse() throws Exception {
         cell = new Cell(4, 2);
         pawn = new Pawn(cell, Color.WHITE);
-        board = new Board(pawn);
+        board = new Board();
+        board.addFigures(pawn);
         pawn.way(new Cell(5, 3));
     }
     /**
@@ -89,7 +94,8 @@ public class PawnTest {
     public void testWayWhenColorBlackPositionNoBasicCoordinateIsFalse() throws Exception {
         cell = new Cell(0, 4);
         pawn = new Pawn(cell, Color.BLACK);
-        board = new Board(pawn);
+        board = new Board();
+        board.addFigures(pawn);
         pawn.way(new Cell(0, 1));
     }
     /**
@@ -100,7 +106,8 @@ public class PawnTest {
     public void testWayWhenColorWhiteMoreBoard() throws Exception {
         cell = new Cell(5, 4);
         pawn = new Pawn(cell, Color.WHITE);
-        board = new Board(pawn);
+        board = new Board();
+        board.addFigures(pawn);
         pawn.way(new Cell(5, 8));
     }
     /**
@@ -111,7 +118,8 @@ public class PawnTest {
     public void testWayWhenColorBlackMoreBoard() throws Exception {
         cell = new Cell(5, 6);
         pawn = new Pawn(cell, Color.BLACK);
-        board = new Board(pawn);
+        board = new Board();
+        board.addFigures(pawn);
         pawn.way(new Cell(5, -1));
     }
 

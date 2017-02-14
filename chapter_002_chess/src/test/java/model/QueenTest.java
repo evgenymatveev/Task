@@ -22,7 +22,8 @@ public class QueenTest {
     public void setUp() throws Exception {
         cell = new Cell(4, 4);
         queen = new Queen(cell);
-        board = new Board(queen);
+        board = new Board();
+        board.addFigures(queen);
     }
     /**
      * Test the method way when coordinates are true diagonally.

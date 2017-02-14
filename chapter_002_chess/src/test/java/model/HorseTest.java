@@ -23,7 +23,8 @@ public class HorseTest {
     public void setUp() throws Exception {
         cell = new Cell(3, 2);
         horse = new Horse(cell);
-        board = new Board(horse);
+        board = new Board();
+        board.addFigures(horse);
     }
     /**
      * Test the method way when coordinates are true.

@@ -17,9 +17,9 @@ public class Board {
      * Board games.
      * @param figure chess figures.
      */
-    public Board(Figure figure) {
-        figures[position++] = figure;
-    }
+//    public Board(Figure figure) {
+//        figures[position++] = figure;
+//    }
 
     /**
      * Method check the correct coordinates.
@@ -46,6 +46,14 @@ public class Board {
             throw new ImpossibleMoveException("Не верная координата, Вы вышли за пределы доски!");
         }
         return false;
+    }
+
+    /**
+     * Add the figures on the Board
+     * @param figure figure.
+     */
+    public void addFigures(Figure figure) {
+        figures[position++] = figure;
     }
 }
 

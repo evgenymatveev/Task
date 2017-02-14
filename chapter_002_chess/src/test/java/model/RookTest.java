@@ -23,7 +23,8 @@ public class RookTest {
     public void setUp() throws Exception {
         cell = new Cell(4, 4);
         rook = new Rook(cell);
-        board = new Board(rook);
+        board = new Board();
+        board.addFigures(rook);
     }
     /**
      * Test the method way when coordinates are true.

@@ -23,7 +23,8 @@ public class ElephantTest {
     public void setUp() throws Exception {
         cell = new Cell(4, 4);
         elephant = new Elephant(cell);
-        board = new Board(elephant);
+        board = new Board();
+        board.addFigures(elephant);
     }
 
     /**
