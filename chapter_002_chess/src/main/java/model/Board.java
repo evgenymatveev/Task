@@ -47,7 +47,6 @@ public class Board {
         }
         return false;
     }
-
     /**
      * Add the figures on the Board
      * @param figure figure.
