@@ -39,22 +39,6 @@ public class CheckedByteEvenTest {
             assertThat(b.isNumber(byteArrayInputStream), is(false));
         }
     }
-    /**
-     * The test checkes that if in the input comes 0 number method isNumber() return true.
-     * @throws IOException IOException.
-     */
-    @Test
-    public void testIsNumberWhenNumberIs0() throws IOException {
-        String a = "0";
-        CheckedByteEven b = new CheckedByteEven();
-
-
-        try (InputStream byteArrayInputStream = new ByteArrayInputStream(a.getBytes())) {
-
-            assertThat(b.isNumber(byteArrayInputStream), is(true));
-
-        }
-    }
     }
 
 
