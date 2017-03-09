@@ -10,7 +10,7 @@ import static org.junit.Assert.assertThat;
 /**
  * @author Matveev Evgeny.
  */
-public class ByteInputStreamTest {
+public class CheckedByteEvenTest {
     /**
      * The test checkes that if in the input comes even number method isNumber() return true.
      * @throws IOException IOException.
@@ -18,7 +18,7 @@ public class ByteInputStreamTest {
     @Test
     public void testIsNumberWhenNumberIsEvenNumber() throws IOException {
         String a = "2";
-        ByteInputStream b = new ByteInputStream();
+        CheckedByteEven b = new CheckedByteEven();
 
         try (InputStream byteArrayInputStream = new ByteArrayInputStream(a.getBytes())) {
 
@@ -32,7 +32,7 @@ public class ByteInputStreamTest {
     @Test
     public void testIsNumberWhenNumberIsOddNumber() throws IOException {
         String a = "3";
-        ByteInputStream b = new ByteInputStream();
+        CheckedByteEven b = new CheckedByteEven();
 
         try (InputStream byteArrayInputStream = new ByteArrayInputStream(a.getBytes())) {
 
@@ -46,7 +46,7 @@ public class ByteInputStreamTest {
     @Test
     public void testIsNumberWhenNumberIs0() throws IOException {
         String a = "0";
-        ByteInputStream b = new ByteInputStream();
+        CheckedByteEven b = new CheckedByteEven();
 
 
         try (InputStream byteArrayInputStream = new ByteArrayInputStream(a.getBytes())) {

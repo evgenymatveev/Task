@@ -6,7 +6,7 @@ import java.io.IOException;
 /**
  * @author Matveev Evgeny.
  */
-public class ByteInputStream {
+public class CheckedByteEven {
     /**
      * The method checks that the byte stream written is an even number.
      * @param in the input stream.
