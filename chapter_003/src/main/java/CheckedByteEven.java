@@ -17,7 +17,7 @@ public class CheckedByteEven {
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
             int x = Integer.parseInt(br.readLine());
-                if ((x % 2) == 0 || x == 0) {
+                if ((x % 2) == 0) {
                     result = true;
                 }
             } catch (IOException e) {
