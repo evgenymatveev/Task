@@ -1,29 +1,74 @@
-import java.io.*;
+import java.io.RandomAccessFile;
+import java.io.File;
+import java.io.IOException;
 import java.util.Objects;
 
 /**
  * @author Matveev Evgeny.
  */
 public class SortBigFile {
+    /**
+     * Курсор для установки места считывания итогового файла.
+     */
     private long kursor = 0;
+    /**
+     * флаг для переключения записи между временными файлами.
+     */
     private boolean flag = true;
+    /**
+     * флаг переключения между временными файлами при чтении их и сливания в итоговый файл.
+     */
     private boolean flagTmp = true;
+    /**
+     * счетчик количества прочитанных строк итогового файла.
+     */
     private int index = 0;
+    /**
+     * счетчик количества строк временного файла 1.
+     */
     private int indexTmp1 = 0;
+    /**
+     * счетчик количества строк временного файла 2.
+     */
     private int indexTmp2 = 0;
+    /**
+     * Курсор для установки места считывания временного файла 1.
+     */
     private long kursorTmp1 = 0;
+    /**
+     * Курсор для установки места считывания временного файла 2.
+     */
     private long kursorTmp2 = 0;
+    /**
+     * Длина файла для сортировки.
+     */
     private long countR;
+    /**
+     * Длина файла итогового.
+     */
     private long countW;
+    /**
+     * Шаг разбития на строки при временной сортировке.
+     */
     private int p = 1;
+    /**
+     * Количество строк при первой разбивке.
+     */
     private int n = 0;
 
+    /**
+     * Метод сортирует строки по возрастанию.
+     *
+     * @param source   файл для сортировки.
+     * @param distance итоговый файл, в который нужно отсортировать.
+     * @throws IOException IOException.
+     */
     public void sort(File source, File distance) throws IOException {
         int count = 0;
         try (RandomAccessFile r = new RandomAccessFile(source, "r");
              RandomAccessFile w = new RandomAccessFile(distance, "rw");
-             RandomAccessFile tmp1 = new RandomAccessFile("tmp1.txt", "rw");
-             RandomAccessFile tmp2 = new RandomAccessFile("tmp2.txt", "rw")) {
+             RandomAccessFile tmp1 = new RandomAccessFile("/Users/apple/Documents/tmp1.txt", "rw");
+             RandomAccessFile tmp2 = new RandomAccessFile("/Users/apple/Documents/tmp2.txt", "rw")) {
 
             countR = r.length();
             countW = w.length();
@@ -70,6 +115,15 @@ public class SortBigFile {
         }
     }
 
+    /**
+     * Метод сливает в итоговый файл части, которые получает из метода mergePart().
+     *
+     * @param p    шаг разбития на строки при временной сортировке.
+     * @param w    итоговый файл.
+     * @param tmp1 временный файл 1.
+     * @param tmp2 временный файл 2.
+     * @throws IOException IOException.
+     */
     private void merge(int p, RandomAccessFile w, RandomAccessFile tmp1, RandomAccessFile tmp2) throws IOException {
         while (countW <= countR) {
             mergePart(p, w, tmp1, tmp2);
@@ -79,6 +133,15 @@ public class SortBigFile {
         }
     }
 
+    /**
+     * Метод сливает определенное количество строк. Их количество зависит от параметра p.
+     *
+     * @param p    шаг разбития на строки при временной сортировке.
+     * @param w    итоговый файл.
+     * @param tmp1 временный файл 1.
+     * @param tmp2 временный файл 2.
+     * @throws IOException IOException.
+     */
     private void mergePart(int p, RandomAccessFile w, RandomAccessFile tmp1, RandomAccessFile tmp2) throws IOException {
         String lineTmp1 = readTmp1(tmp1);
         String lineTmp2 = readTmp2(tmp2);
@@ -123,6 +186,13 @@ public class SortBigFile {
         countW = w.length();
     }
 
+    /**
+     * Метод читает временный файл 1.
+     *
+     * @param tmp1 временный файл 1.
+     * @return возвращает прочитанную строку.
+     * @throws IOException IOException.
+     */
     private String readTmp1(RandomAccessFile tmp1) throws IOException {
         tmp1.seek(kursorTmp1);
         String line = tmp1.readLine();
@@ -134,6 +204,13 @@ public class SortBigFile {
         return line;
     }
 
+    /**
+     * Метод читает временный файл 2.
+     *
+     * @param tmp2 временный файл 2.
+     * @return возвращает прочитанную строку.
+     * @throws IOException IOException.
+     */
     private String readTmp2(RandomAccessFile tmp2) throws IOException {
         tmp2.seek(kursorTmp2);
         String line = tmp2.readLine();
@@ -145,6 +222,15 @@ public class SortBigFile {
         return line;
     }
 
+    /**
+     * Метод запускает метод readLineW() для считывания строк итогого файла перед разбитием на временные файлы, анализирует и запускает метод для записи records().
+     *
+     * @param w    итоговый файл.
+     * @param p    шаг разбития на строки при временной сортировке.
+     * @param tmp1 временный файл 1.
+     * @param tmp2 временный файл 2.
+     * @throws IOException IOException.
+     */
     private void readW(RandomAccessFile w, int p, RandomAccessFile tmp1, RandomAccessFile tmp2) throws IOException {
         while (kursor < w.length()) {
             for (int i = 0; i < p; i++) {
@@ -162,6 +248,13 @@ public class SortBigFile {
         }
     }
 
+    /**
+     * Метод читает строки итогового файла.
+     *
+     * @param w итоговый файл.
+     * @return возвращает прочитанную строку.
+     * @throws IOException IOException.
+     */
     private String readLineW(RandomAccessFile w) throws IOException {
         w.seek(kursor);
         String line = w.readLine();
@@ -170,6 +263,14 @@ public class SortBigFile {
         return line;
     }
 
+    /**
+     * Метод записывает прочитанные строки из итогового файла в соответствующие временные файлы.
+     *
+     * @param line полученная строка после прочтения из метода readLineW().
+     * @param tmp1 временный файл 1.
+     * @param tmp2 временный файл 2.
+     * @throws IOException IOException.
+     */
     private void records(String line, RandomAccessFile tmp1, RandomAccessFile tmp2) throws IOException {
         if (flag) {
             tmp1.seek(kursorTmp1);
@@ -182,6 +283,12 @@ public class SortBigFile {
         }
     }
 
+    /**
+     * Метод переключает поле "flag" для верной записи во временный файлы.
+     *
+     * @param index счетчик количества прочитанных строк итогового файла.
+     * @param p     шаг разбития на строки при временной сортировке.
+     */
     private void flagReg(int index, int p) {
         for (int i = 2; i < n; i = i + 2) {
             if (index == p * i) {
@@ -189,60 +296,6 @@ public class SortBigFile {
             }
         }
     }
-
-//    public static void main(String[] args) throws IOException {
-//        File fR = new File("textR.txt");
-//        File fW = new File("textW.txt");
-//        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fR, false))) {
-//            writer.write("Евгений" + "\n"
-//                    + "Александр" + "\n"
-//                    + "Света" + "\n"
-//                    + "Юля" + "\n"
-//                    + "Вячеслава" + "\n"
-//                    + "Нина" + "\n"
-//                    + "Оля" + "\n"
-//                    + "Николай" + "\n"
-//                    + "Даниил" + "\n"
-//                    + "Петр" + "\n"
-//                    + "Роберт" + "\n"
-//                    + "Александр" + "\n"
-//                    + "Света" + "\n"
-//                    + "Юля" + "\n"
-//                    + "Вячеслава" + "\n"
-//                    + "Александр" + "\n"
-//                    + "Света" + "\n"
-//                    + "Юля" + "\n"
-//                    + "Вячеслава" + "\n"
-//                    + "Александр" + "\n"
-//                    + "Света" + "\n"
-//                    + "Юля" + "\n"
-//                    + "Вячеслава" + "\n"
-//                    + "Александр" + "\n"
-//                    + "Света" + "\n"
-//                    + "Юля" + "\n"
-//                    + "Вячеслава" + "\n"
-//                    + "Влада" + "\n"
-//                    + "Анастасия" + "\n"
-//                    + "Татьяна" + "\n"
-//                    + "Родион" + "\n"
-//                    + "Нина" + "\n"
-//                    + "Оля" + "\n"
-//                    + "Николай" + "\n"
-//                    + "Даниил" + "\n"
-//                    + "Петр" + "\n"
-//                    + "Роберт" + "\n"
-//                    + "Влада" + "\n"
-//                    + "Сергей" + "\n"
-//                    + "Вячеслав" + "\n"
-//                    + "Иннокентий" + "\n"
-//            );
-//            writer.flush();
-//            SortBigFile sortBigFile = new SortBigFile();
-//            sortBigFile.sort(fR, fW);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 }
 
 

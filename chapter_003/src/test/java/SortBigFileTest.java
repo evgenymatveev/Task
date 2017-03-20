@@ -1,9 +1,9 @@
 import org.junit.Test;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.RandomAccessFile;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -12,37 +12,27 @@ import static org.junit.Assert.assertThat;
  * @author Matveev Evgeny.
  */
 public class SortBigFileTest {
+    /**
+     * Тест проверяет правильность сортировки файла.
+     * @throws Exception Exception.
+     */
     @Test
     public void testSort() throws Exception {
-        File fR = new File("textR.txt");
-        File fW = new File("textW.txt");
+        File fR = new File("/Users/apple/Documents/textR.txt");
+        File fW = new File("/Users/apple/Documents/textW.txt");
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(fR, false));
+        String line = "";
+        File newFw = new File("/Users/apple/Documents/textW.txt");
 
-            writer.write("Евгений" + "\n"
-                    + "Александр" + "\n"
-                    + "Оля" + "\n");
-            writer.flush();
-            writer.close();
-            SortBigFile sortBigFile = new SortBigFile();
-            sortBigFile.sort(fR, fW);
-
-        String line;
-        String result = "";
-
-        String s = "Оля" + "\n" + "Евгений" + "\n" + "Александр" + "\n";
-
-        File newFw = new File("textW.txt");
-
-        try (RandomAccessFile raf = new RandomAccessFile(newFw, "r")){
-            while ((line = raf.readLine()) != null) {
-                result = line +"\n";
+        try {
+            Scanner fileScanner = new Scanner(new FileReader(newFw));
+            while (fileScanner.hasNext()) {
+                line = line + fileScanner.nextLine();
             }
-
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-
-            assertThat(result, is(s));
-
+            assertThat(line, is("Оля" + "Евгений" + "Александр"));
         }
     }
 
