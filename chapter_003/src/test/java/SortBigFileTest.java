@@ -14,15 +14,17 @@ import static org.junit.Assert.assertThat;
 public class SortBigFileTest {
     /**
      * Тест проверяет правильность сортировки файла.
+     *
      * @throws Exception Exception.
      */
     @Test
     public void testSort() throws Exception {
-        File fR = new File("/Users/apple/Documents/textR.txt");
-        File fW = new File("/Users/apple/Documents/textW.txt");
+        String sr = File.separator;
+        File fR = new File(sr + "Users" + sr + "apple" +sr + "Documents" + sr + "textR.txt");
+        File fW = new File(sr + "Users" + sr + "apple" +sr + "Documents" + sr + "textW.txt");
 
         String line = "";
-        File newFw = new File("/Users/apple/Documents/textW.txt");
+        File newFw = new File(sr + "Users" + sr + "apple" +sr + "Documents" + sr + "textW.txt");
 
         try {
             Scanner fileScanner = new Scanner(new FileReader(newFw));
@@ -32,7 +34,7 @@ public class SortBigFileTest {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-            assertThat(line, is("Оля" + "Евгений" + "Александр"));
-        }
+        assertThat(line, is("Оля" + "Евгений" + "Александр"));
     }
+}
 

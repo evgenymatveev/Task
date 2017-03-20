@@ -55,6 +55,10 @@ public class SortBigFile {
      * Количество строк при первой разбивке.
      */
     private int n = 0;
+    /**
+     * Разделитель пути файла.
+     */
+    private String sr = File.separator;
 
     /**
      * Метод сортирует строки по возрастанию.
@@ -67,8 +71,8 @@ public class SortBigFile {
         int count = 0;
         try (RandomAccessFile r = new RandomAccessFile(source, "r");
              RandomAccessFile w = new RandomAccessFile(distance, "rw");
-             RandomAccessFile tmp1 = new RandomAccessFile("/Users/apple/Documents/tmp1.txt", "rw");
-             RandomAccessFile tmp2 = new RandomAccessFile("/Users/apple/Documents/tmp2.txt", "rw")) {
+             RandomAccessFile tmp1 = new RandomAccessFile(sr + "Users" + sr + "apple" +sr + "Documents" + sr + "tmp1.txt", "rw");
+             RandomAccessFile tmp2 = new RandomAccessFile(sr + "Users" + sr + "apple" +sr + "Documents" + sr + "tmp2.txt", "rw")) {
 
             countR = r.length();
             countW = w.length();
