@@ -1,3 +1,5 @@
+package ru.ematveev;
+
 import java.io.RandomAccessFile;
 import java.io.File;
 import java.io.IOException;
