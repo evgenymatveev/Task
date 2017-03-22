@@ -1,7 +1,6 @@
-package ru.matveev;
+package ru.ematveev;
 
 import org.junit.Test;
-import ru.ematveev.DeleteWord;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

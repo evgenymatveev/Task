@@ -1,6 +1,12 @@
 package ru.ematveev;
 
-import java.io.*;
+//import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.util.zip.Deflater;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -8,56 +14,101 @@ import java.util.zip.ZipOutputStream;
  * @author Matveev Evgeny.
  */
 public class ArchiverZipFile {
-    //
-    public void checkDirectory(File z, File in, String [] s) {
+    /**
+     * The file which needs to be eventually archived.
+     */
+    private final File arhZip;
+    /**
+     * Directory from which to read files.
+     */
+    private final File inDir;
+    /**
+     * The list of extentions.
+     */
+    private final String[] ext;
+    /**
+     * The switch for the method checkFile() checking extensions.
+     */
+    private boolean flag = false;
 
-            if(in.isDirectory()) {
-                File[] list = in.listFiles();
-                    for(File item : list) {
-                        if(item.isDirectory()) {
-                            checkDirectory(z, item, s);
+    /**
+     * The class that produces the archiving of files.
+     * @param arhZip the file which needs to be eventually archived.
+     * @param inDir the list of extentions.
+     * @param ext the switch for the method checkFile() checking extensions.
+     */
+    public ArchiverZipFile(File arhZip, File inDir, String[] ext) {
+        this.arhZip = arhZip;
+        this.inDir = inDir;
+        this.ext = ext;
+    }
+
+    /**
+     * The method reviewer is to read the object directory or file.
+     */
+    public void checkDirectory() {
+
+            if (inDir.isDirectory()) {
+                File[] list = inDir.listFiles();
+                    for (File item : list) {
+                        if (item.isDirectory()) {
+                            checkDirectory();
                         } else {
-                            if(checkFile(item, s)) {
-                                arh(z, item);
-                            } else {
-                                break;
-                            }
+                            checkFile(item);
+                                if (flag) {
+                                    arh(item);
+                                }
                         }
                     }
             }
     }
-    //проверяет соответствует ли расширение заданным, если да - возвращает true
-    private boolean checkFile(File file, String[] ext) {
+
+    /**
+     * The method examines each file and compares the file extensions specified.
+     * @param file check the file.
+     * @return flag.
+     */
+    private boolean checkFile(File file) {
         for (String sExt : ext) {
             if (sExt.equals(getFileExtension(file))) {
-                return true;
+                flag = true;
+                break;
             } else {
-                return false;
+                flag = false;
             }
         }
-        return false;
+        return flag;
     }
-    //возвращает расширение у файла
+
+    /**
+     * Returns the extension from the check file.
+     * @param file check the file.
+     * @return the extension or an empty string if there was no extension.
+     */
     private static String getFileExtension(File file) {
         String fileName = file.getName();
-        if(fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0) {
-            return fileName.substring(fileName.lastIndexOf(".")+1);
+        if (fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0) {
+            return fileName.substring(fileName.lastIndexOf(".") + 1);
         } else {
             return "";
         }
     }
-    //производит архивацию
-    private void arh(File z, File in) {
 
-        try (ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(z));
-             FileInputStream fileInputStream = new FileInputStream(in);)
-            {
-                    ZipEntry zipEntry = new ZipEntry(in.getName());
-                    zipOutputStream.putNextEntry(zipEntry);
-                    byte[] buffer = new byte[1024];
-                    fileInputStream.read(buffer);
-                    zipOutputStream.write(buffer);
-                    zipOutputStream.closeEntry();
+    /**
+     * Writes files into the archive.
+     * @param in the file to write to the archive.
+     */
+    private void arh(File in) {
+
+        try (ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(arhZip));
+             FileInputStream fileInputStream = new FileInputStream(in);) {
+                byte[] buffer = new byte[1024];
+                zipOutputStream.setLevel(Deflater.DEFAULT_COMPRESSION);
+                ZipEntry zipEntry = new ZipEntry(in.getName());
+                zipOutputStream.putNextEntry(zipEntry);
+                fileInputStream.read(buffer);
+                zipOutputStream.write(buffer);
+                zipOutputStream.closeEntry();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -66,8 +117,5 @@ public class ArchiverZipFile {
         }
     }
 }
-
-
-
 
 

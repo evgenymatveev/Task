@@ -1,7 +1,6 @@
-package ru.matveev;
+package ru.ematveev;
 
 import org.junit.Test;
-import ru.ematveev.SortBigFile;
 
 import java.io.File;
 import java.io.FileNotFoundException;

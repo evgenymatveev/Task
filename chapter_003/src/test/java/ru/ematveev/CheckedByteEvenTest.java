@@ -1,4 +1,4 @@
-package ru.matveev;
+package ru.ematveev;
 
 import org.junit.Test;
 import ru.ematveev.CheckedByteEven;
