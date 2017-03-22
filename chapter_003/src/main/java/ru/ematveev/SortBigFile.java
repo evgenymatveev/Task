@@ -73,8 +73,8 @@ public class SortBigFile {
         int count = 0;
         try (RandomAccessFile r = new RandomAccessFile(source, "r");
              RandomAccessFile w = new RandomAccessFile(distance, "rw");
-             RandomAccessFile tmp1 = new RandomAccessFile(sr + "Users" + sr + "apple" +sr + "Documents" + sr + "tmp1.txt", "rw");
-             RandomAccessFile tmp2 = new RandomAccessFile(sr + "Users" + sr + "apple" +sr + "Documents" + sr + "tmp2.txt", "rw")) {
+             RandomAccessFile tmp1 = new RandomAccessFile(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "J" + sr + "tmp1.txt", "rw");
+             RandomAccessFile tmp2 = new RandomAccessFile(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "J" + sr + "tmp2.txt", "rw")) {
 
             countR = r.length();
             countW = w.length();
