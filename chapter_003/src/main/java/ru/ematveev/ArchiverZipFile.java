@@ -26,10 +26,6 @@ public class ArchiverZipFile {
      * The list of extentions.
      */
     private final String[] ext;
-    /**
-     * The switch for the method checkFile() checking extensions.
-     */
-    private boolean flag = false;
 
     /**
      * The class that produces the archiving of files.
@@ -54,8 +50,7 @@ public class ArchiverZipFile {
                         if (item.isDirectory()) {
                             checkDirectory();
                         } else {
-                            checkFile(item);
-                                if (flag) {
+                                if (checkFile(item)) {
                                     arh(item);
                                 }
                         }
@@ -71,13 +66,11 @@ public class ArchiverZipFile {
     private boolean checkFile(File file) {
         for (String sExt : ext) {
             if (sExt.equals(getFileExtension(file))) {
-                flag = true;
-                break;
-            } else {
-                flag = false;
+                return true;
+
             }
         }
-        return flag;
+        return false;
     }
 
     /**
