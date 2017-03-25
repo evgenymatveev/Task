@@ -1,6 +1,5 @@
 package ru.ematveev;
 
-//import java.io.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -88,7 +87,7 @@ public class ArchiverZipFile {
 
     /**
      * Method for start the progtam.
-     * @param args
+     * @param args input string parametrs.
      */
     public static void main(String...args) {
         File outZip = new File(args[1]);
