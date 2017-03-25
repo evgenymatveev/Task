@@ -86,6 +86,10 @@ public class ArchiverZipFile {
         }
     }
 
+    /**
+     * Method for start the progtam.
+     * @param args
+     */
     public static void main(String...args) {
         File outZip = new File(args[1]);
         File in = new File(args[3]);
