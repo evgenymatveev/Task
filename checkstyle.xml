@@ -66,7 +66,12 @@
 
         <!-- Checks for Javadoc comments.                     -->
         <!-- See http://checkstyle.sf.net/config_javadoc.html -->
-        <module name="JavadocMethod"/>
+        <module name="JavadocMethod">
+            <!-- disable getters/setters check -->
+            <property name="allowMissingPropertyJavadoc" value="true"/>
+            <!-- disable constructors check -->
+            <property name="ignoreMethodNamesRegex" value="^[A-Z].*$"/>
+        </module>
         <module name="JavadocType"/>
         <!-- disable private check -->
         <module name="JavadocVariable">
