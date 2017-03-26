@@ -7,7 +7,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>ru.matveev</groupId>
+    <groupId>ru.ematveev</groupId>
     <artifactId>chapter_003</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
