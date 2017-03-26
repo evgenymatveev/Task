@@ -24,15 +24,15 @@ public class SortBigFileTest {
         String sr = File.separator;
 //        File fR = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "J" + sr + "textR.txt");
 //        File fW = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "J" + sr + "textW.txt");
-        File fR = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "Parsentev"+ sr + "CoursJava"+ sr + "chapter_003" + sr + "textR.txt");
-        File fW = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "Parsentev"+ sr + "CoursJava"+ sr + "chapter_003" + sr + "textW.txt");
+        File fR = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "Parsentev" + sr + "CoursJava" + sr + "chapter_003" + sr + "textR.txt");
+        File fW = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "Parsentev" + sr + "CoursJava" + sr + "chapter_003" + sr + "textW.txt");
 
         SortBigFile sortBigFiler = new SortBigFile();
         sortBigFiler.sort(fR, fW);
 
         String line = "";
 //        File newFw = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "J" + sr + "textW.txt");
-        File newFw = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "Parsentev"+ sr + "CoursJava"+ sr + "chapter_003" + sr + "textW.txt");
+        File newFw = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "Parsentev" + sr + "CoursJava" + sr + "chapter_003" + sr + "textW.txt");
 
         try {
             Scanner fileScanner = new Scanner(new FileReader(newFw));
