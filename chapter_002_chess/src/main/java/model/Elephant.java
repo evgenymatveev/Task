@@ -6,6 +6,10 @@ import exception.ImpossibleMoveException;
  * @author Matveev Evgeny.
  */
 public class Elephant extends Figure {
+    /**
+     * Constructor for write the figure.
+     * @param position coordinate of figure.
+     */
     Elephant(Cell position) {
         super(position);
     }
@@ -21,8 +25,8 @@ public class Elephant extends Figure {
     public Cell[] way(Cell dist) throws ImpossibleMoveException {
         int dx = dist.getX();
         int dy = dist.getY();
-        int px = position.getX();
-        int py = position.getY();
+        int px = getPosition().getX();
+        int py = getPosition().getY();
         if (Math.abs(px - dx) == Math.abs(py - dy)) {
             cells = createPath(dx, dy, px, py);
         } else {

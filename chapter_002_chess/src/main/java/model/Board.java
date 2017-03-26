@@ -35,7 +35,7 @@ public class Board {
         if (!(dist.getX() > max || dist.getX() < min || dist.getY() > max || dist.getY() < min)) {
 
             for (Figure f : figures) {
-                if (source.equals(f.position)) {
+                if (source.equals(f.getPosition())) {
                     f.way(dist);
                     return true;
                 } else {

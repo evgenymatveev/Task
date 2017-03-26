@@ -6,6 +6,10 @@ import exception.ImpossibleMoveException;
  * @author Matveev Evgeny.
  */
 public class Horse extends Figure {
+    /**
+     * Constructor for write the figure.
+     * @param position coordinate of figure.
+     */
     Horse(Cell position) {
         super(position);
     }
@@ -20,8 +24,8 @@ public class Horse extends Figure {
     public Cell[] way(Cell dist) throws ImpossibleMoveException {
         int dx = dist.getX();
         int dy = dist.getY();
-        int px = position.getX();
-        int py = position.getY();
+        int px = getPosition().getX();
+        int py = getPosition().getY();
         int k = 0;
 
         if (Math.abs(py - dy) == 2 && Math.abs(px - dx) == 1

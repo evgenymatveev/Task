@@ -6,8 +6,11 @@ import exception.ImpossibleMoveException;
  * @author Matveev Evgeny.
  */
 public abstract class Figure {
-    public Cell position;
-
+    private Cell position;
+    /**
+     * Constructor for write the figure.
+     * @param position coordinate of figure.
+     */
     public Figure(Cell position) {
         this.position = position;
     }
@@ -46,6 +49,7 @@ public abstract class Figure {
         }
         return a;
     }
+
     public Cell getPosition() {
         return position;
     }

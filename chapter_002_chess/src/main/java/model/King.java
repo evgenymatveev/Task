@@ -6,6 +6,10 @@ import exception.ImpossibleMoveException;
  * @author Matveev Evgeny.
  */
 public class King extends Figure {
+    /**
+     * Constructor for write the figure.
+     * @param position coordinate of figure.
+     */
     King(Cell position) {
         super(position);
     }
@@ -20,8 +24,8 @@ public class King extends Figure {
     public Cell[] way(Cell dist) throws ImpossibleMoveException {
         int dx = dist.getX();
         int dy = dist.getY();
-        int px = position.getX();
-        int py = position.getY();
+        int px = getPosition().getX();
+        int py = getPosition().getY();
         if (Math.abs(px - dx) == 1 && Math.abs(py - dy) == 1 || (Math.abs(px - dx) == 0 && Math.abs(py - dy) == 1)
                 || (Math.abs(py - dy) == 0 && Math.abs(px - dx) == 1)) {
             cells = createPath(dx, dy, px, py);
