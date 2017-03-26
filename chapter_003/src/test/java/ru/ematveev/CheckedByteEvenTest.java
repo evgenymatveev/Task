@@ -1,12 +1,9 @@
 package ru.ematveev;
 
 import org.junit.Test;
-import ru.ematveev.CheckedByteEven;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
