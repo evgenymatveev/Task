@@ -22,8 +22,8 @@ public class ArchiverZipFileTest {
         File fileOutZip = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "J" + sr + "output.zip");
         File fileIn = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "J");
 
-        ArchiverZipFile archiverZipFile = new ArchiverZipFile(fileOutZip, fileIn, ext);
-        archiverZipFile.checkDirectory();
+        ArchiverZipFile archiverZipFile = new ArchiverZipFile(fileOutZip, ext);
+        archiverZipFile.init(fileIn);
 
         File file = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "J" + sr + "output.zip");
         assertNotNull(file);
