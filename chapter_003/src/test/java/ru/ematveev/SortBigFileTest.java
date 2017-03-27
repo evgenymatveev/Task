@@ -4,8 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.FileReader;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import static org.hamcrest.core.Is.is;
@@ -26,7 +28,13 @@ public class SortBigFileTest {
     public void setUp() throws Exception {
         String sr = File.separator;
         fW = File.createTempFile("textW", ".txt");
-        fR = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "J" + sr + "textR.txt");
+        //fR = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "J" + sr + "textR.txt");
+        fR = File.createTempFile("textR", ".txt");
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fR))) {
+            bufferedWriter.write("Евгений" + "\n"
+                    + "Александр" + "\n"
+                    +  "Оля" + "\n");
+        }
     }
 
     /**
