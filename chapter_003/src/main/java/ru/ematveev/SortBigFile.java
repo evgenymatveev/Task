@@ -71,10 +71,12 @@ public class SortBigFile {
      */
     public void sort(File source, File distance) throws IOException {
         int count = 0;
+        File tmpOne = File.createTempFile("tmp1", ".txt");
+        File tmpTwo = File.createTempFile("tmp2", ".txt");
         try (RandomAccessFile r = new RandomAccessFile(source, "r");
              RandomAccessFile w = new RandomAccessFile(distance, "rw");
-             RandomAccessFile tmp1 = new RandomAccessFile(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "J" + sr + "tmp1.txt", "rw");
-             RandomAccessFile tmp2 = new RandomAccessFile(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "J" + sr + "tmp2.txt", "rw")) {
+             RandomAccessFile tmp1 = new RandomAccessFile(tmpOne, "rw");
+             RandomAccessFile tmp2 = new RandomAccessFile(tmpTwo, "rw")) {
 
             countR = r.length();
             countW = w.length();
