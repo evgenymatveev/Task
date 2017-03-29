@@ -1,0 +1,23 @@
+
+12:31:38,979 [INFO] Chat.consoleInp:28 - Добро пожаловать в чат!
+12:31:43,062 [INFO] Chat.consoleInp:33 - привет
+12:31:43,067 [INFO] Chat.checkFlag:63 - никогда
+12:31:49,460 [INFO] Chat.consoleInp:33 - точно?
+12:31:49,460 [INFO] Chat.checkFlag:63 - возможно
+12:31:53,900 [INFO] Chat.consoleInp:33 - а когда?
+12:31:53,900 [INFO] Chat.checkFlag:63 - наверняка
+12:31:57,953 [INFO] Chat.consoleInp:33 - да?
+12:31:57,953 [INFO] Chat.checkFlag:63 - никогда
+12:32:06,434 [INFO] Chat.consoleInp:33 - стоп
+12:32:15,763 [INFO] Chat.consoleInp:33 - пваплдаопрфлаопржлаопр
+12:32:16,613 [INFO] Chat.consoleInp:33 - вапвпфвап
+12:32:17,532 [INFO] Chat.consoleInp:33 - апфвпва
+12:32:18,505 [INFO] Chat.consoleInp:33 - вапфвап
+12:32:19,433 [INFO] Chat.consoleInp:33 - фвапфвапф
+12:32:20,260 [INFO] Chat.consoleInp:33 - фвапфвап
+12:32:24,546 [INFO] Chat.consoleInp:33 - продолжить
+12:32:28,624 [INFO] Chat.consoleInp:33 - а все таки?
+12:32:28,625 [INFO] Chat.checkFlag:63 - нет
+12:32:32,399 [INFO] Chat.consoleInp:33 - точно?
+12:32:32,400 [INFO] Chat.checkFlag:63 - я знаю
+12:32:41,538 [INFO] Chat.consoleInp:33 - закончить
