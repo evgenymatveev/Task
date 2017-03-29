@@ -1,0 +1,31 @@
+18:39:08,656 [INFO] Chat.consoleInp:27 - Добро пожаловать в чат!
+18:39:12,012 [INFO] Chat.checkFlag:62 - наверняка
+18:39:12,018 [INFO] Chat.consoleInp:32 - dfgdfg
+18:39:14,588 [INFO] Chat.consoleInp:32 - стоп
+18:40:52,986 [INFO] Chat.consoleInp:27 - Добро пожаловать в чат!
+18:40:57,256 [INFO] Chat.checkFlag:63 - наверняка
+18:40:57,262 [INFO] Chat.consoleInp:32 - валпорвалоп
+18:40:58,033 [INFO] Chat.checkFlag:63 - нет
+18:40:58,034 [INFO] Chat.consoleInp:32 - вапвыап
+18:40:59,462 [INFO] Chat.consoleInp:32 - стоп
+18:41:00,398 [INFO] Chat.consoleInp:32 - вапывапва
+18:41:04,138 [INFO] Chat.consoleInp:32 - ыапвыппродолжить
+18:41:10,591 [INFO] Chat.checkFlag:63 - возможно
+18:41:10,592 [INFO] Chat.consoleInp:32 - продолжить
+18:41:11,563 [INFO] Chat.checkFlag:63 - я знаю
+18:41:11,564 [INFO] Chat.consoleInp:32 - аыфва
+18:41:12,284 [INFO] Chat.checkFlag:63 - нет
+18:41:12,285 [INFO] Chat.consoleInp:32 - фва
+18:41:15,304 [INFO] Chat.checkPhrases:48 - закончить
+18:47:30,556 [INFO] Chat.consoleInp:27 - Добро пожаловать в чат!
+18:47:35,794 [INFO] Chat.checkFlag:69 - возможно
+18:47:35,809 [INFO] Chat.consoleInp:32 - привет
+18:47:43,169 [INFO] Chat.consoleInp:32 - стоп
+18:47:47,716 [INFO] Chat.consoleInp:32 - делаю
+18:47:50,005 [INFO] Chat.consoleInp:32 - что-то
+18:47:53,726 [INFO] Chat.consoleInp:32 - с задачей
+18:47:57,549 [INFO] Chat.checkFlag:69 - никогда
+18:47:57,549 [INFO] Chat.consoleInp:32 - продолжить
+18:48:06,525 [INFO] Chat.checkFlag:69 - никогда
+18:48:06,525 [INFO] Chat.consoleInp:32 - да
+18:48:11,254 [INFO] Chat.checkPhrases:54 - закончить
