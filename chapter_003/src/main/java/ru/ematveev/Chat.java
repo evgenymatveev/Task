@@ -96,7 +96,11 @@ public class Chat {
      */
     public static void main(String[] args) throws IOException {
         String sr = File.separator;
-        File logPropertyFile = new File(sr + "Users" + sr + "apple" + sr + "Documents" + sr + "JAVA" + sr + "J" + sr + "log4j.properties");
+        File logPropertyFile = new File(sr + "Users" + sr + "apple"
+                                        + sr + "Documents" + sr + "JAVA"
+                                        + sr + "Parsentev" + sr
+                                        + sr + "CoursJava" + sr + "chapter_003"
+                                        + sr + "log4j.properties");
 
         Config config = new Config(logPropertyFile);
         config.init();
