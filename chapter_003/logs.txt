@@ -29,3 +29,12 @@
 18:48:06,525 [INFO] Chat.checkFlag:69 - никогда
 18:48:06,525 [INFO] Chat.consoleInp:32 - да
 18:48:11,254 [INFO] Chat.checkPhrases:54 - закончить
+18:54:35,660 [INFO] Chat.consoleInp:27 - Добро пожаловать в чат!
+18:54:39,828 [INFO] Chat.checkFlag:71 - возможно
+18:54:39,832 [INFO] Chat.consoleInp:32 - 111
+18:54:41,461 [INFO] Chat.checkFlag:71 - нет
+18:54:41,462 [INFO] Chat.consoleInp:32 - 22
+18:54:48,029 [INFO] Chat.consoleInp:32 - стоп
+18:54:49,472 [INFO] Chat.consoleInp:32 - 444
+18:54:50,286 [INFO] Chat.consoleInp:32 - 555
+18:54:54,114 [INFO] Chat.checkPhrases:54 - закончить
