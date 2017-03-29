@@ -15,40 +15,48 @@ public class Chat {
     private Random random = new Random();
     private Scanner sc = new Scanner(System.in);
     private String[] phrases = new String[]{"я знаю", "нет", "никогда", "возможно", "наверняка"};
+    private boolean flag = true;
     private static Logger logger = Logger.getLogger(Chat.class);
 
     /**
-     * Method reads messages from the console and responds or not, depending on conditions.
+     * Method reads messages from the console.
      */
     public void consoleInp() {
-        boolean flag = true;
         String priv = "Добро пожаловать в чат!";
-
         System.out.println(priv);
         logger.info(priv);
-        label:
         while (sc.hasNext()) {
             String s = sc.nextLine();
-                if (!Objects.equals(s, "")) {
-                    logger.info(s);
-                }
-                switch (s) {
-                    case "стоп":
-                        flag = false;
-                        break;
-                    case "продолжить":
-                        flag = true;
-                        break;
-                    case "закончить":
-                        break label;
-                    default:
-                        if (!Objects.equals(s, "")) {
-                            checkFlag(flag);
-                        }
-                        break;
-                }
+            if (!checkPhrases(s) && !Objects.equals(s, "")) {
+                checkFlag(flag);
+                logger.info(s);
+            } else {
+                break;
+            }
         }
+    }
 
+    /**
+     * Method check the phrase.
+     *
+     * @param s input phrase for check.
+     * @return boolean.
+     */
+    private boolean checkPhrases(String s) {
+        switch (s) {
+            case "стоп":
+                flag = false;
+                break;
+            case "продолжить":
+                flag = true;
+                break;
+            case "закончить":
+                logger.info(s);
+                return true;
+            default:
+                break;
+        }
+        return false;
     }
 
     /**
@@ -96,8 +104,6 @@ public class Chat {
         chat.consoleInp();
     }
 }
-
-
 
 
 
