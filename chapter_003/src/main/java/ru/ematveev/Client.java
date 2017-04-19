@@ -1,41 +1,61 @@
 package ru.ematveev;
 
-import java.io.*;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Scanner;
 
 /**
- * @author Matveev Evgeny.
+ * Class Client for query answers from the server.
  */
 public class Client {
-    public static void main(String[] args) {
-        int port = 4000;
-        String ip = "127.0.0.1";
-    try {
-        InetAddress inetAddress = InetAddress.getByName(ip);
-        Socket socket = new Socket(inetAddress, port);
+    private static final int port = 7667;
+    private final static String ip = "127.0.0.1";
+    private final Socket socket;
 
-        InputStream sin = socket.getInputStream();
-        OutputStream sout = socket.getOutputStream();
-        DataInputStream in = new DataInputStream(sin);
-        DataOutputStream out = new DataOutputStream(sout);
-        Scanner console = new Scanner(System.in);
+    private Client(Socket socket) {
+        this.socket = socket;
+    }
 
-        String str;
-        String cons;
+    /**
+     * The method for send the request for server.
+      */
+    private void clientBot() {
+        try {
+            InputStream sin = socket.getInputStream();
+            OutputStream sout = socket.getOutputStream();
+            DataInputStream in = new DataInputStream(sin);
+            DataOutputStream out = new DataOutputStream(sout);
+            Scanner console = new Scanner(System.in);
+
+            String str;
+            String cons;
             do {
                 cons = console.next();
                 out.writeUTF(cons);
                 out.flush();
-                str = in.readUTF();
-                System.out.println(str);
-
-            } while (cons.equals("exit"));
-    } catch (Exception e) {
-        e.printStackTrace();
+                do {
+                    str = in.readUTF();
+                    System.out.println(str);
+                } while (!str.equals(""));
+            } while (!cons.equals("exit"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
+    /**
+     * The method for start the Client.
+     * @param args String argements.
+     * @throws IOException exception
+     */
+    public static void main(String[] args) throws IOException {
+        try (Socket socket = new Socket(InetAddress.getByName(ip), port)) {
+            new Client(socket).clientBot();
+        }
     }
 }
 
