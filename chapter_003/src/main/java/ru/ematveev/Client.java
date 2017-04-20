@@ -13,8 +13,8 @@ import java.util.Scanner;
  * Class Client for query answers from the server.
  */
 public class Client {
-    private static final int port = 7667;
-    private final static String ip = "127.0.0.1";
+    private static final int PORT = 7667;
+    private static final String IP = "127.0.0.1";
     private final Socket socket;
 
     private Client(Socket socket) {
@@ -53,7 +53,7 @@ public class Client {
      * @throws IOException exception
      */
     public static void main(String[] args) throws IOException {
-        try (Socket socket = new Socket(InetAddress.getByName(ip), port)) {
+        try (Socket socket = new Socket(InetAddress.getByName(IP), PORT)) {
             new Client(socket).clientBot();
         }
     }
