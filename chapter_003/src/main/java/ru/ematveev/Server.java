@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class Server {
     private final Random random = new Random();
-    private static final int port = 7667;
+    private static final int PORT = 7667;
     private final Socket socket;
     private final String[] answer = new String[]{"answer1", "answer2", "answer3", "answer4", "answer5", "answer6"};
 
@@ -74,7 +74,7 @@ public class Server {
      * @throws IOException exception
      */
     public static void main(String[] args) throws IOException {
-        try (ServerSocket serverSocket = new ServerSocket(port);
+        try (ServerSocket serverSocket = new ServerSocket(PORT);
              Socket socket = serverSocket.accept()) {
             new Server(socket).serverBot();
         }
