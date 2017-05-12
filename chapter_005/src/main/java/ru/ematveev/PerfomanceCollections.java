@@ -1,11 +1,6 @@
 package ru.ematveev;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Random;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Class measures the time insert and delete items in collections ArrayList, LinkedList and TreeSet.
