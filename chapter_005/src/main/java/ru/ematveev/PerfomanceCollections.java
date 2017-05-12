@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.TreeSet;
+import java.util.Iterator;
 
 /**
  * Class measures the time insert and delete items in collections ArrayList, LinkedList and TreeSet.
@@ -15,7 +16,7 @@ public class PerfomanceCollections {
     private static final String CHAR = "qwertyuiopasdfghjklzxcvbnm1234567890";
     private static final int STRING_LENGTH = 8;
     private static final int NSMALL = 10000;
-    private static final int NBIG = 100000;
+    private static final int NBIG = 1000000;
     private static final int AMOUNT = 100;
     private Random random = new Random();
 
@@ -63,9 +64,10 @@ public class PerfomanceCollections {
      * @return the time in milliseconds.
      */
     private long delete(Collection<String> collection, int amount) {
+        Iterator iter = collection.iterator();
         int k = 0;
-        while (collection.iterator().hasNext() && k < amount) {
-            String str = collection.iterator().next();
+        if (iter.hasNext() && k < amount) {
+            String str = (String) iter.next();
             collection.remove(str);
         }
         return System.currentTimeMillis();
