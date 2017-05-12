@@ -85,7 +85,7 @@ public class PerfomanceCollections {
         long startArrayList = System.currentTimeMillis();
         add(arrayList, array);
         long diffArrayList = System.currentTimeMillis() - startArrayList;
-        System.out.printf("Время вставки строки в коллекцию ArrayList: %s mc \n", diffArrayList);
+        System.out.printf("Время вставки строк в коллекцию ArrayList: %s mc \n", diffArrayList);
 
         long startLinkedList = System.currentTimeMillis();
         add(linkedList, array);
