@@ -1,10 +1,12 @@
 package ru.ematveev;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * Class convert two-dimensional array to List and back.
+ *
  * @author Matveev Evgeny.
  */
 public class ConvertList {
@@ -12,6 +14,7 @@ public class ConvertList {
 
     /**
      * Method convert two-dimensional array to List.
+     *
      * @param array two-dimensional array.
      * @return list Integer.
      */
@@ -26,11 +29,13 @@ public class ConvertList {
 
     /**
      * Method convert List to two-dimensional array with the given number of rows.
+     *
      * @param list List Integer.
      * @param rows numbers rows for split array.
      * @return two-dimensional array.
      */
     public int[][] toArray(List<Integer> list, int rows) {
+        Iterator<Integer> iter = list.iterator();
         int columns = 0;
         int k = 0;
         if (list.size() % rows != 0) {
@@ -42,14 +47,12 @@ public class ConvertList {
         int[][] arr = new int[rows][columns];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                if (k == list.size()) {
-                    arr[i][j] = 0;
-                } else {
-                    arr[i][j] = list.get(k);
-                    k++;
+                if (iter.hasNext()) {
+                    arr[i][j] = iter.next();
                 }
             }
         }
+
         return arr;
     }
 }
