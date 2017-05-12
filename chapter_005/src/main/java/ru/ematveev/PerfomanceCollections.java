@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class PerfomanceCollections {
     private static final String CHAR = "qwertyuiopasdfghjklzxcvbnm1234567890";
-    private static final int STRING_LENGTH = 3;
+    private static final int STRING_LENGTH = 8;
     private static final int NSMALL = 10000;
     private static final int NBIG = 100000;
     private static final int AMOUNT = 100;
