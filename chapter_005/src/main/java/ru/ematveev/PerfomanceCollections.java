@@ -64,10 +64,10 @@ public class PerfomanceCollections {
      * @return the time in milliseconds.
      */
     private long delete(Collection<String> collection, int amount) {
-        Iterator iter = collection.iterator();
+        Iterator <String> iter = collection.iterator();
         int k = 0;
         if (iter.hasNext() && k < amount) {
-            String str = (String) iter.next();
+            String str = iter.next();
             collection.remove(str);
         }
         return System.currentTimeMillis();
