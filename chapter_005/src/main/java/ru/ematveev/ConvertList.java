@@ -55,6 +55,21 @@ public class ConvertList {
 
         return arr;
     }
+
+    /**
+     * Method converts List arrays in to List Integer.
+     * @param list input List arrays.
+     * @return List Integer.
+     */
+    public List<Integer> convert(List<int[]> list) {
+        List<Integer> result = new ArrayList<>();
+        for (int[] ls : list) {
+            for (int l : ls) {
+                result.add(l);
+            }
+        }
+        return result;
+    }
 }
 
 
