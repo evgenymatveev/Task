@@ -17,9 +17,11 @@ public class ConvertListTest {
     private ConvertList convertList;
     private int[][] arr = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
     private List<Integer> list;
+    private List<int[]> list2;
 
     /**
      * Method for initial data.
+     *
      * @throws Exception Exception.
      */
     @Before
@@ -33,10 +35,15 @@ public class ConvertListTest {
         list.add(5);
         list.add(6);
         list.add(7);
+        list2 = new ArrayList<>();
+        list2.add(new int[]{1, 2});
+        list2.add(new int[]{3, 4, 5, 6});
+        list2.add(new int[]{7, 8, 9, 10, 11, 12, 13, 14, 15});
     }
 
     /**
      * Test for method validation toList.
+     *
      * @throws Exception Exception.
      */
     @Test
@@ -50,6 +57,7 @@ public class ConvertListTest {
 
     /**
      * Test for method validation toArray.
+     *
      * @throws Exception Exception.
      */
     @Test
@@ -59,5 +67,18 @@ public class ConvertListTest {
 
         assertThat(actualvalue, is(expectedValue));
     }
+
+    /**
+     * Test for method convert().
+     * @throws Exception Exception.
+     */
+    @Test
+    public void testWhenListArraysConvertToList() throws Exception {
+        List<Integer> actualvalue = convertList.convert(list2);
+        List<Integer> expectedValue = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15));
+
+        assertThat(actualvalue, is(expectedValue));
+    }
+
 
 }
