@@ -3,6 +3,8 @@ package ru.ematveev.start;
 import ru.ematveev.model.IPrinter;
 import ru.ematveev.model.MenuTracker;
 
+import java.util.List;
+
 /**
  * Сlass StartUI run the project.
  * @author Matveev Evgeny.
@@ -43,7 +45,7 @@ public class StartUI {
         menu.fillAction();
         do {
             menu.show();
-            int[] resultmenu = menu.numberItems();
+            List<Integer> resultmenu = menu.numberItems();
             menu.select(input.ask("Select:", resultmenu));
         } while (!"y".equals(this.input.ask("Exit(y):")));
     }

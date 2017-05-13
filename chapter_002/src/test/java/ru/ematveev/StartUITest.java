@@ -49,7 +49,7 @@ public class StartUITest {
 
         new StartUI(input, tracker, printer).init();
         String expectedValue = tracker.findByName("task").getId();
-        assertThat(tracker.findAll()[0].getId(), is(expectedValue));
+        assertThat(tracker.findAll().get(0).getId(), is(expectedValue));
     }
 
     /**
@@ -68,7 +68,7 @@ public class StartUITest {
 
         new StartUI(input, tracker, printer).init();
 
-        String id = tracker.findAll()[0].getId();
+        String id = tracker.findAll().get(0).getId();
 
         verify(printer).println(id + "." + " " + "task" + "." + " " + "desc");
     }
@@ -83,7 +83,7 @@ public class StartUITest {
 
         tracker.add(task);
 
-        String id = tracker.findAll()[0].getId();
+        String id = tracker.findAll().get(0).getId();
 
         Input input = new StubInput(new String[] {"2", id, "task1", "desc1", "y"});
 
@@ -115,7 +115,7 @@ public class StartUITest {
 
         tracker.add(task);
 
-        String id = tracker.findAll()[0].getId();
+        String id = tracker.findAll().get(0).getId();
 
         Input input = new StubInput(new String[] {"3", id, "y"});
 
@@ -143,7 +143,7 @@ public class StartUITest {
 
         new StartUI(input, tracker, printer).init();
 
-        String id = tracker.findAll()[0].getId();
+        String id = tracker.findAll().get(0).getId();
 
         verify(printer).println(id + "." + " " + "task" + "." + " " + "desc");
 
@@ -159,7 +159,7 @@ public class StartUITest {
 
         tracker.add(task);
 
-        String id = tracker.findAll()[0].getId();
+        String id = tracker.findAll().get(0).getId();
 
         Input input = new StubInput(new String[] {"5", id, "y"});
 
@@ -181,7 +181,7 @@ public class StartUITest {
 
         tracker.add(task);
 
-        String id = tracker.findAll()[0].getId();
+        String id = tracker.findAll().get(0).getId();
 
         Input input = new StubInput(new String[] {"6", "n", "y"});
 
@@ -189,7 +189,7 @@ public class StartUITest {
 
         new StartUI(input, tracker, printer).init();
 
-        assertThat(tracker.findAll()[0].getName(), is("task"));
+        assertThat(tracker.findAll().get(0).getName(), is("task"));
 
     }
     /**
@@ -202,7 +202,7 @@ public class StartUITest {
 
         tracker.add(task);
 
-        String id = tracker.findAll()[0].getId();
+        String id = tracker.findAll().get(0).getId();
 
         Input input = new StubInput(new String[] {"6", "y", "y"});
 
@@ -222,7 +222,7 @@ public class StartUITest {
 
         tracker.add(task);
 
-        String id = tracker.findAll()[0].getId();
+        String id = tracker.findAll().get(0).getId();
 
         Input input = new StubInput(new String[] {"7", id, "comment1", "y"});
 

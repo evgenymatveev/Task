@@ -1,5 +1,7 @@
 package ru.ematveev.start;
 
+import java.util.List;
+
 /**
  * Interface.
  *
@@ -18,8 +20,8 @@ public interface Input {
     /**
      * Method for the questions to the user.
      * @param question question.
-     * @param ranges ranges.
+     * @param ranges List ranges.
      * @return int.
      */
-    int ask(String question, int[] ranges);
+    int ask(String question, List<Integer> ranges);
 }

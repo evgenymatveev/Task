@@ -1,5 +1,6 @@
 package ru.ematveev.start;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -27,11 +28,11 @@ public class ConsoleInput implements Input {
     /**
      * Method ask() for question.
      * @param question question.
-     * @param ranges ranges.
+     * @param ranges List ranges.
      * @return int key.
      * @throws MenuOutException MenuOutException.
      */
-    public int ask(String question, int[] ranges) throws MenuOutException {
+    public int ask(String question, List<Integer> ranges) throws MenuOutException {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;
         for (int value : ranges) {

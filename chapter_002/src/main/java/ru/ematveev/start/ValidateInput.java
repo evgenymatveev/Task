@@ -1,5 +1,7 @@
 package ru.ematveev.start;
 
+import java.util.List;
+
 /**
  * Class ValidateInput extends ConsoleInput.
  *
@@ -11,10 +13,10 @@ public class ValidateInput extends ConsoleInput {
     /**
      * Method ask() for question.
      * @param question question.
-     * @param ranges ranges.
+     * @param ranges List ranges.
      * @return int key.
      */
-    public int ask(String question, int[] ranges) {
+    public int ask(String question, List<Integer> ranges) {
         boolean invalide = true;
         int value = -1;
         do {

@@ -1,16 +1,19 @@
 package ru.ematveev;
 
-import org.junit.Test;
 import org.junit.Before;
+import org.junit.Test;
+import ru.ematveev.model.Item;
+import ru.ematveev.start.Tracker;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static junit.framework.TestCase.assertNull;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
-
-import ru.ematveev.model.Item;
-import ru.ematveev.start.Tracker;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Class TrackerTest for testing of the metods of the class Tracker.
@@ -55,8 +58,10 @@ public class TrackerTest {
 
         item2 = new Item("task2", "descr2", count);
     }
+
     /**
      * The metod testAdd() checks for adding items to the array.
+     *
      * @throws Exception exception.
      */
     @Test
@@ -67,6 +72,7 @@ public class TrackerTest {
 
     /**
      * The metod testUpdate() checks for editing items.
+     *
      * @throws Exception exception.
      */
     @Test
@@ -88,6 +94,7 @@ public class TrackerTest {
 
     /**
      * The metod testDelete() checks for deleting items.
+     *
      * @throws Exception exception.
      */
     @Test
@@ -103,6 +110,7 @@ public class TrackerTest {
 
     /**
      * The metod testFindAll() checks the output is not null items.
+     *
      * @throws Exception exception.
      */
     @Test
@@ -111,13 +119,15 @@ public class TrackerTest {
         tracker.add(item1);
         tracker.add(item2);
 
-        Item[] actualValue = tracker.findAll();
+        List<Item> actualValue = tracker.findAll();
 
-        assertThat(actualValue, is(new Item[]{item, item1, item2}));
+        assertThat(actualValue, is(new ArrayList<Item>(Arrays.asList(item, item1, item2))));
+
     }
 
     /**
      * The metod testFindByName() looking for elements by name.
+     *
      * @throws Exception exception.
      */
     @Test
@@ -132,6 +142,7 @@ public class TrackerTest {
 
     /**
      * The metod testFindById() looking for elements by ID.
+     *
      * @throws Exception exception.
      */
     @Test
@@ -145,6 +156,7 @@ public class TrackerTest {
 
     /**
      * The method validates generation of a random number and convert it to a string.
+     *
      * @throws Exception exception.
      */
     @Test
@@ -164,6 +176,7 @@ public class TrackerTest {
 
     /**
      * The metod testDeleteAll() checks for deleting all items.
+     *
      * @throws Exception exception.
      */
     @Test
@@ -174,7 +187,7 @@ public class TrackerTest {
 
         tracker.deleteAll();
 
-        assertThat(0, is(tracker.findAll().length));
+        assertThat(0, is(tracker.findAll().size()));
     }
 
 }

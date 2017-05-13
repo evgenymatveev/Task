@@ -1,26 +1,23 @@
 package ru.ematveev.start;
 
 import ru.ematveev.model.Item;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+
 /**
  * Сlass Tracker.
+ *
  * @author Matveev Evgeny.
  * @version 1.0.
  * @since 25.12.2016.
  */
 public class Tracker {
     /**
-     * The number of elements in the array.
+     * List items.
      */
-    private final int count = 10;
-    /**
-     * Array for storage the items.
-     */
-    private Item[] items = new Item[count];
-    /**
-     * counter index in Array items.
-     */
-    private int position = 0;
+    private List<Item> items = new ArrayList<>();
     /**
      * create object for generation random number.
      */
@@ -28,57 +25,60 @@ public class Tracker {
 
     /**
      * metod of add the new item.
+     *
      * @param item item.
      * @return item.
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[position++] = item;
+        this.items.add(item);
         return item;
     }
 
     /**
      * metod of update the item.
-     * @param item item.
+     *
+     * @param item   item.
      * @param itemID ItemID.
      */
     public void update(String itemID, Item item) {
-        for (int index = 0; index < items.length; index++) {
-            if (item != null && items[index].getId().equals(itemID)) {
-                items[index] = item;
+        for (int index = 0; index < items.size(); index++) {
+            if (item != null && items.get(index).getId().equals(itemID)) {
+                items.set(index, item);
                 break;
             }
         }
+
     }
+
     /**
      * metod of delete the item.
+     *
      * @param item item.
      */
     public void delete(Item item) {
-        for (int index = 0; index < items.length; index++) {
-            if (item != null && items[index].getId().equals(item.getId())) {
-                items[index] = null;
-                position--;
-                System.arraycopy(items, index + 1, items, index, items.length - index - 1);
+        for (int index = 0; index < items.size(); index++) {
+            if (item != null && items.get(index).getId().equals(item.getId())) {
+                items.remove(index);
                 break;
             }
         }
     }
+
     /**
      * metod of extraction all the items.
+     *
      * @return item.
      */
-    public Item[] findAll() {
-        Item[] result = new Item[this.position];
-        for (int index = 0; index != this.position; index++) {
-            result[index] = this.items[index];
-        }
+    public List<Item> findAll() {
+        List<Item> result = new ArrayList<>();
+        result.addAll(items);
         return result;
     }
 
-
     /**
      * metod of find the item by name.
+     *
      * @param name ID.
      * @return name.
      */
@@ -95,6 +95,7 @@ public class Tracker {
 
     /**
      * metod of find search item by ID.
+     *
      * @param id id.
      * @return item.
      */
@@ -108,24 +109,22 @@ public class Tracker {
         }
         return result;
     }
+
     /**
      * The method for delete the all items.
      */
     public void deleteAll() {
-        this.items = new Item[this.items.length];
-        position = 0;
+        items.clear();
     }
+
     /**
      * metod of generate the random number for ID.
+     *
      * @return String.
      */
     public String generateId() {
         return String.valueOf(System.currentTimeMillis() + RN.nextInt());
     }
 }
-
-
-
-
 
 

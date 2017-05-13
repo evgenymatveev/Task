@@ -1,5 +1,7 @@
 package ru.ematveev.start;
 
+import java.util.List;
+
 /**
  * Class.
  *
@@ -40,10 +42,10 @@ public class StubInput implements Input {
     /**
      * Method ask() for qustion.
      * @param question question.
-     * @param ranges ranges.
+     * @param ranges List ranges.
      * @return int key.
      */
-    public int ask(String question, int[] ranges) {
+    public int ask(String question, List<Integer> ranges) {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;
         for (int value : ranges) {
