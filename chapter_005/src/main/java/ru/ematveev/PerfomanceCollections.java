@@ -64,7 +64,7 @@ public class PerfomanceCollections {
      * @return the time in milliseconds.
      */
     private long delete(Collection<String> collection, int amount) {
-        Iterator <String> iter = collection.iterator();
+        Iterator<String> iter = collection.iterator();
         int k = 0;
         if (iter.hasNext() && k < amount) {
             String str = iter.next();
