@@ -31,4 +31,26 @@ public class SortUserTest {
         assertThat(actualValue, is(list2));
     }
 
+    /**
+     * Test check method sortLength that sorts users by the length of the name.
+     * @throws Exception Exception.
+     */
+    @Test
+    public void testWhenInMethodSortLengthAddListAndComparatorUsersLengthComparator() throws Exception {
+        Users users1 = new Users("evgen", 30);
+        Users users2 = new Users("vladislav", 20);
+        Users users3 = new Users("gleb", 35);
+        SortUser sortUser = new SortUser();
+        UsersLengthComparator usersLengthComparator = new UsersLengthComparator();
+        List<Users> list = new ArrayList<>();
+        List<Users> list2 = new ArrayList<>();
+        list.add(users1);
+        list.add(users2);
+        list.add(users3);
+        list2.add(users3);
+        list2.add(users1);
+        list2.add(users2);
+
+        assertThat(sortUser.sortLength(list), is(list2));
+    }
 }
