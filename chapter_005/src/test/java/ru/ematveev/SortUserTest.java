@@ -41,7 +41,6 @@ public class SortUserTest {
         Users users2 = new Users("vladislav", 20);
         Users users3 = new Users("gleb", 35);
         SortUser sortUser = new SortUser();
-        UsersLengthComparator usersLengthComparator = new UsersLengthComparator();
         List<Users> list = new ArrayList<>();
         List<Users> list2 = new ArrayList<>();
         list.add(users1);
