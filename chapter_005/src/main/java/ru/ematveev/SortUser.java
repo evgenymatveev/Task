@@ -1,10 +1,10 @@
 package ru.ematveev;
 
-import java.util.Collections;
 import java.util.Set;
-import java.util.TreeSet;
 import java.util.List;
-
+import java.util.Collections;
+import java.util.TreeSet;
+import java.util.Comparator;
 /**
  * Class age sorts the users in ascending order.
  */
@@ -26,7 +26,19 @@ public class SortUser {
      * @return sorted collection.
      */
     public List<Users> sortHash(List<Users> list) {
-        Collections.sort(list, new UsersHashComparator());
+        Collections.sort(list, new Comparator<Users>() {
+                @Override
+                public int compare(Users o1, Users o2) {
+                    if (o1.hashCode() < o2.hashCode()) {
+                        return  -1;
+                    }
+                    if (o1.hashCode() > o2.hashCode()) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }
+        });
         return list;
     }
     /**
@@ -35,7 +47,18 @@ public class SortUser {
      * @return sorted collection.
      */
     public List<Users> sortLength(List<Users> list) {
-        Collections.sort(list, new UsersLengthComparator());
+            Collections.sort(list, new Comparator<Users>() {
+                  public int compare(Users o1, Users o2) {
+                    if (o1.getName().length() < o2.getName().length()) {
+                        return  -1;
+                    }
+                    if (o1.getName().length() > o2.getName().length()) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }
+            });
         return list;
     }
 }
