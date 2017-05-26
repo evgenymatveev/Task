@@ -22,7 +22,9 @@ public class Bank {
      * @param user new user.
      */
     public void addUser(User user) {
-        map.put(user, new ArrayList<>());
+        if (user != null) {
+            map.put(user, new ArrayList<>());
+        }
     }
 
     /**
@@ -31,7 +33,9 @@ public class Bank {
      * @param user user for remove.
      */
     public void deleteUser(User user) {
-        map.remove(user);
+        if (map.containsKey(user)) {
+            map.remove(user);
+        }
     }
 
     /**
@@ -41,7 +45,9 @@ public class Bank {
      * @param account account for add.
      */
     public void addAccountToUser(User user, Account account) {
-        map.get(user).add(account);
+        if (map.containsKey(user)) {
+            map.get(user).add(account);
+        }
     }
 
     /**
@@ -56,7 +62,7 @@ public class Bank {
         while (it.hasNext()) {
             Account item = it.next();
             if (item.equals(account)) {
-                list.remove(item);
+                it.remove();
             }
         }
     }
@@ -68,7 +74,10 @@ public class Bank {
      * @return list of accaunt.
      */
     public List<Account> getUserAccounts(User user) {
-        List<Account> list = map.get(user);
+        List<Account> list = new ArrayList<>();
+            if (map.containsKey(user)) {
+                list = map.get(user);
+            }
         return list;
     }
 
