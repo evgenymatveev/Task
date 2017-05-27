@@ -26,40 +26,17 @@ public class SortUser {
      * @return sorted collection.
      */
     public List<Users> sortHash(List<Users> list) {
-        Collections.sort(list, new Comparator<Users>() {
-                @Override
-                public int compare(Users o1, Users o2) {
-                    if (o1.hashCode() < o2.hashCode()) {
-                        return  -1;
-                    }
-                    if (o1.hashCode() > o2.hashCode()) {
-                        return 1;
-                    } else {
-                        return 0;
-                    }
-                }
-        });
+        Collections.sort(list, Comparator.comparingInt(Users::hashCode));
         return list;
-    }
+        }
+
     /**
      * Method sorts the collection by length of name.
      * @param list input collection.
      * @return sorted collection.
      */
     public List<Users> sortLength(List<Users> list) {
-            Collections.sort(list, new Comparator<Users>() {
-                  public int compare(Users o1, Users o2) {
-                    if (o1.getName().length() < o2.getName().length()) {
-                        return  -1;
-                    }
-                    if (o1.getName().length() > o2.getName().length()) {
-                        return 1;
-                    } else {
-                        return 0;
-                    }
-                }
-            });
-        return list;
-    }
+            Collections.sort(list, Comparator.comparingInt(o -> o.getName().length()));
+            return list;
+            }
 }
-
