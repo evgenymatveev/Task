@@ -67,17 +67,80 @@ public class SortSubdivision {
         return list;
     }
 
+    public List<String> sortDescending() {
+        list.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if ((o1.contains("\\") && (o2.contains("\\"))
+                        && (o1.substring(0, o1.indexOf("\\")).equals(o2.substring(0, o2.indexOf("\\")))))) {
+
+                    if (o2.length() == o1.length() || o2.length() > o1.length()) {
+                        return o2.compareTo(o1);
+                    }
+                }
+                if (!o1.contains("\\") && (o2.contains("\\"))
+                        && (o1.equals(o2.substring(0, o2.indexOf("\\"))))) {
+                    return o1.compareTo(o2);
+                }
+                if (!o2.contains("\\") && (o1.contains("\\")
+                        && (o1.substring(0, o1.indexOf("\\")).equals(o2)))) {
+                    return o1.compareTo(o2);
+                }
+                if (!o1.contains("\\") && !o2.contains("\\")
+                        && (o1.equals(o2))) {
+                    return o1.compareTo(o2);
+                }
+
+
+                if ((o1.contains("\\") && (o2.contains("\\"))
+                        && (!o1.substring(0, o1.indexOf("\\")).equals(o2.substring(0, o2.indexOf("\\")))))) {
+                    return o2.compareTo(o1);
+                }
+                if (!o1.contains("\\") && (o2.contains("\\"))
+                        && (!o1.equals(o2.substring(0, o2.indexOf("\\"))))) {
+                    return o2.compareTo(o1);
+                }
+                if (!o2.contains("\\") && (o1.contains("\\")
+                        && (!o1.substring(0, o1.indexOf("\\")).equals(o2)))) {
+                    return o2.compareTo(o1);
+                }
+                if (!o1.contains("\\") && !o2.contains("\\")
+                        && (!o1.equals(o2))) {
+                    return o2.compareTo(o1);
+                } else {
+                    return 0;
+                }
+            }
+
+
+        });
+
+        return list;
+    }
+
     public static void main(String[] args) {
         List<String> list = new ArrayList<String>();
         list.add("K1\\SK1\\SSK1");
         list.add("K2\\SK1\\SSK1");
-        list.add("K2\\SK1");
         list.add("K1\\SK1\\SSK2");
         list.add("K2\\SK1\\SSK2");
+        list.add("K2\\SK2\\SSK2");
+        list.add("K1\\SK2\\SSK2");
+
+
+//        list.add("K2\\SK1\\SSK2");
+//        list.add("K2\\SK2\\SSK2");
+//        list.add("K1\\SK2\\SSK2");
+//        list.add("K2\\SK1");
+//        list.add("K1\\SK1\\SSK2");
+//        list.add("K1\\SK1\\SSK1");
+//        list.add("K2\\SK1\\SSK1");
+
 
         SortSubdivision ss = new SortSubdivision(list);
         ss.divide();
-        ss.sortAscending();
+        //ss.sortAscending();
+        ss.sortDescending();
 
         for (String s : ss.list) {
             System.out.println(s);
