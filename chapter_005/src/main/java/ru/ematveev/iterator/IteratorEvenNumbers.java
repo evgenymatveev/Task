@@ -11,11 +11,19 @@ public class IteratorEvenNumbers implements Iterator {
 
     @Override
     public boolean hasNext() {
-        return value.length > index;
+        return value.length > index && checkEven() != 0;
     }
 
     @Override
     public Object next() {
+        return checkEven();
+    }
+
+    /**
+     * Parity check method.
+     * @return numbers if it is even.
+     */
+    private int checkEven() {
         int result = 0;
         for (int i = index; i < value.length; i++) {
             if (value[i] % 2 != 0) {
