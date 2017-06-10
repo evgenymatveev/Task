@@ -5,36 +5,48 @@ import java.util.Iterator;
 /**
  * @author Matveev Evgeny.
  */
-public class IteratorEvenNumbers implements Iterator {
+public class IteratorEvenNumbers implements Iterator<Integer> {
     private final int[] value = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 26, 44, 11};
     private int index = 0;
 
     @Override
     public boolean hasNext() {
-        return value.length > index && checkEven() != 0;
+        return value.length > index && (checkEven(index) != -1);
     }
 
     @Override
-    public Object next() {
-        return checkEven();
+    public Integer next() {
+        index = checkEven(index);
+        return value[index++];
     }
 
     /**
      * Parity check method.
      * @return numbers if it is even.
      */
-    private int checkEven() {
-        int result = 0;
-        for (int i = index; i < value.length; i++) {
-            if (value[i] % 2 != 0) {
-                index = i + 1;
-            } else {
-                index = i + 1;
-                result = value[i];
-                return result;
+    private int checkEven(int n) {
+        for (int i = n; i < value.length; i++) {
+            if (value[i] % 2 == 0) {
+                return i;
             }
         }
-        return result;
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        IteratorEvenNumbers it = new IteratorEvenNumbers();
+
+        System.out.println(it.hasNext());
+        System.out.println(it.next());
+        System.out.println(it.next());
+        System.out.println(it.hasNext());
+        System.out.println(it.next());
+        System.out.println(it.next());
+        System.out.println(it.next());
+        System.out.println(it.next());
+        System.out.println(it.next());
+        System.out.println(it.hasNext());
+        System.out.println(it.hasNext());
     }
 }
 
