@@ -12,7 +12,7 @@ public class IteratorArray implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        return value.length > j;
+        return value[i].length > j && value.length > i;
     }
 
     @Override
