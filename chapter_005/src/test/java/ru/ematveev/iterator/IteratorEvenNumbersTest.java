@@ -39,7 +39,6 @@ public class IteratorEvenNumbersTest {
         it.next();
         it.next();
         it.next();
-        it.next();
         it.hasNext();
         boolean result = it.hasNext();
 
