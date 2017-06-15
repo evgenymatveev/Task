@@ -1,122 +1,38 @@
 package ru.ematveev.sortsubdivision;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author Matveev Evgeny.
  */
 public class SortSubdivision {
-    private List<String> list;
-    private List<String[]> listtmp = new ArrayList<>();
+    private final List<String> list;
+    private Set<String> set = new HashSet<String>();
 
     public SortSubdivision(List<String> list) {
         this.list = list;
     }
 
     public void divide() {
+        String res = null;
         for (String str : list) {
             String sp = "\\\\";
             String[] a = str.split(sp);
-            listtmp.add(a);
-        }
-        checkElements();
-    }
-
-    private void checkElements() {
-        ListIterator<String[]> it = listtmp.listIterator();
-
-        while (it.hasNext()) {
-            String[] str = it.next();
-            int l = str.length;
-            while (l != 1) {
-                String[] b = new String[l - 1];
-                System.arraycopy(str, 0, b, 0, l - 1);
-                if (!addElement(b)) {
-                    StringBuilder sb = new StringBuilder();
-                    for (int i = 0; i < (l - 1); i++) {
-                        sb.append(b[i]);
-                        if (i != (l - 1 - 1)) {
-                            sb.append("\\");
-                        }
-                    }
-                    //System.out.println(sb.toString());
-                    it.add(b);
-                    list.add(sb.toString());
+            for (int i = 0; i < a.length; i++) {
+                if(i == 0) {
+                    res = a[i];
                 }
-                l--;
+                if(i > 0) {
+                    res = res + "\\" + a[i];
+                }
+                set.add(res);
             }
         }
     }
 
-    private boolean addElement(String[] b) {
-        for (String[] s : listtmp) {
-            if (Arrays.equals(b, s)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public List<String> sortAscending() {
-        list.sort(new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return o1.compareTo(o2);
-            }
-        });
-        return list;
-    }
-
-    public List<String> sortDescending() {
-        list.sort(new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                if ((o1.contains("\\") && (o2.contains("\\"))
-                        && (o1.substring(0, o1.indexOf("\\")).equals(o2.substring(0, o2.indexOf("\\")))))) {
-
-                    if (o2.length() == o1.length() || o2.length() > o1.length()) {
-                        return o2.compareTo(o1);
-                    }
-                }
-                if (!o1.contains("\\") && (o2.contains("\\"))
-                        && (o1.equals(o2.substring(0, o2.indexOf("\\"))))) {
-                    return o1.compareTo(o2);
-                }
-                if (!o2.contains("\\") && (o1.contains("\\")
-                        && (o1.substring(0, o1.indexOf("\\")).equals(o2)))) {
-                    return o1.compareTo(o2);
-                }
-                if (!o1.contains("\\") && !o2.contains("\\")
-                        && (o1.equals(o2))) {
-                    return o1.compareTo(o2);
-                }
-
-
-                if ((o1.contains("\\") && (o2.contains("\\"))
-                        && (!o1.substring(0, o1.indexOf("\\")).equals(o2.substring(0, o2.indexOf("\\")))))) {
-                    return o2.compareTo(o1);
-                }
-                if (!o1.contains("\\") && (o2.contains("\\"))
-                        && (!o1.equals(o2.substring(0, o2.indexOf("\\"))))) {
-                    return o2.compareTo(o1);
-                }
-                if (!o2.contains("\\") && (o1.contains("\\")
-                        && (!o1.substring(0, o1.indexOf("\\")).equals(o2)))) {
-                    return o2.compareTo(o1);
-                }
-                if (!o1.contains("\\") && !o2.contains("\\")
-                        && (!o1.equals(o2))) {
-                    return o2.compareTo(o1);
-                } else {
-                    return 0;
-                }
-            }
-
-
-        });
-
-        return list;
-    }
 
     public static void main(String[] args) {
         List<String> list = new ArrayList<String>();
@@ -127,26 +43,12 @@ public class SortSubdivision {
         list.add("K2\\SK2\\SSK2");
         list.add("K1\\SK2\\SSK2");
 
+        SortSubdivision sd = new SortSubdivision(list);
+        sd.divide();
 
-//        list.add("K2\\SK1\\SSK2");
-//        list.add("K2\\SK2\\SSK2");
-//        list.add("K1\\SK2\\SSK2");
-//        list.add("K2\\SK1");
-//        list.add("K1\\SK1\\SSK2");
-//        list.add("K1\\SK1\\SSK1");
-//        list.add("K2\\SK1\\SSK1");
-
-
-        SortSubdivision ss = new SortSubdivision(list);
-        ss.divide();
-        //ss.sortAscending();
-        ss.sortDescending();
-
-        for (String s : ss.list) {
+        for (String s : sd.set) {
             System.out.println(s);
         }
 
     }
 }
-
-
