@@ -22,6 +22,7 @@ public class IteratorEvenNumbers implements Iterator<Integer> {
 
     /**
      * Parity check method.
+     * @param n index of elements.
      * @return numbers if it is even.
      */
     private int checkEven(int n) {
@@ -33,6 +34,10 @@ public class IteratorEvenNumbers implements Iterator<Integer> {
         return -1;
     }
 
+    /**
+     * Method start the program.
+     * @param args String[].
+     */
     public static void main(String[] args) {
         IteratorEvenNumbers it = new IteratorEvenNumbers();
 

@@ -11,9 +11,9 @@ public class IteratorSimpleNumbers implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        if(value.length > index) {
+        if (value.length > index) {
             for (int i = index; i < value.length; i++) {
-                if(checkSqrt(i)) {
+                if (checkSqrt(i)) {
                     return true;
                 }
             }
