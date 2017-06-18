@@ -56,9 +56,9 @@ public class SimpleArray<T> {
 
     /**
      * Method for changing the value of an element in an array.
-     *
-     * @param position number of the cell in the array where the element is located.
-     * @param value    value of an element in an array of type T.
+     * @param valueOld value to change.
+     * @param valueNew the value to which you want to change.
+     * @return boolean.
      */
     public boolean update(T valueOld, T valueNew) {
         for (Object elem : this.objects) {
