@@ -1,5 +1,7 @@
 package ru.ematveev.generic;
 
+import java.util.Arrays;
+
 /**
  * Class for storages the different elements.
  * @param <T> parametrized type.
@@ -29,7 +31,12 @@ public class SimpleArray<T> {
      * @param value Incoming element of any type.
      */
     public void add(T value) {
-        this.objects[index++] = value;
+        if(index < objects.length) {
+            this.objects[index++] = value;
+        } else {
+            objects = Arrays.copyOf(objects, objects.length * 2);
+            this.objects[index++] = value;
+        }
     }
 
     /**
@@ -46,8 +53,12 @@ public class SimpleArray<T> {
      * @param position number of the cell in the array where the element is located.
      * @param value value of an element in an array of type T.
      */
-    public void update(int position, T value) {
-        this.objects[position] = value;
+    public void update(T valueOld, T valueNew) {
+        for (Object elem: this.objects) {
+            if(elem.equals(valueOld)) {
+                valueOld = valueNew;
+            }
+        }
     }
 
     /**
