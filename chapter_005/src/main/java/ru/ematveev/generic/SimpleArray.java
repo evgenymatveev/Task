@@ -53,12 +53,14 @@ public class SimpleArray<T> {
      * @param position number of the cell in the array where the element is located.
      * @param value value of an element in an array of type T.
      */
-    public void update(T valueOld, T valueNew) {
+    public boolean update(T valueOld, T valueNew) {
         for (Object elem: this.objects) {
-            if(elem.equals(valueOld)) {
-                valueOld = valueNew;
+            if(elem.equals(valueOld) && valueOld.getClass() == elem.getClass()) {
+                elem = valueNew;
+                return true;
             }
         }
+        return false;
     }
 
     /**
