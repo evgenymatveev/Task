@@ -16,16 +16,19 @@ public class SortSubdivision {
         this.list = list;
     }
 
+    /**
+     * Adding missing units to set.
+     */
     public void divide() {
         String res = null;
         for (String str : list) {
             String sp = "\\\\";
             String[] a = str.split(sp);
             for (int i = 0; i < a.length; i++) {
-                if(i == 0) {
+                if (i == 0) {
                     res = a[i];
                 }
-                if(i > 0) {
+                if (i > 0) {
                     res = res + "\\" + a[i];
                 }
                 set.add(res);
@@ -33,7 +36,10 @@ public class SortSubdivision {
         }
     }
 
-
+    /**
+     * Method starting the program.
+     * @param args String arguments.
+     */
     public static void main(String[] args) {
         List<String> list = new ArrayList<String>();
         list.add("K1\\SK1\\SSK1");
