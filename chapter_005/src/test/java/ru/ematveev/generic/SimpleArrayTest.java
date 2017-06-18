@@ -63,9 +63,7 @@ public class SimpleArrayTest {
         simpleArray.add(1);
         simpleArray.add(2);
 
-        simpleArray.update(0, 10);
-
-        assertThat(simpleArray.getValue(0), is(10));
+        assertThat(simpleArray.update(2, 10), is(true));
     }
 
     /**
