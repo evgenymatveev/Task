@@ -61,10 +61,12 @@ public class SimpleArray<T> {
      * @return boolean.
      */
     public boolean update(T valueOld, T valueNew) {
-        for (Object elem : this.objects) {
-            if (elem.equals(valueOld) && valueOld.getClass() == elem.getClass()) {
-                elem = valueNew;
+        for (int i = 0; i < objects.length; i++) {
+            if (objects[i].equals(valueOld) && valueOld.getClass() == objects[i].getClass()) {
+                objects[i] = valueNew;
+                System.out.println(objects[i]);
                 return true;
+
             }
         }
         return false;
@@ -92,9 +94,16 @@ public class SimpleArray<T> {
      * @return boolean.
      */
     public boolean delete(T value) {
-        for (Object elem : objects) {
-            if (elem.equals(value)) {
-                elem = null;
+        for (int i = 0; i < this.objects.length; i++) {
+            if (objects[i].equals(value) && value.getClass() == objects[i].getClass()) {
+                for (int j = i; j < objects.length - 1; j++) {
+                    objects[j] = objects[j + 1];
+
+                }
+                Object[] newArr = new Object[objects.length - 1];
+                System.arraycopy(objects, 0, newArr, 0, objects.length - 1);
+                objects = newArr;
+                System.out.println(objects.length);
                 return true;
             }
         }
