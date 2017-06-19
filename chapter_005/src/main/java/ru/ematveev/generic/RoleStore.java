@@ -29,6 +29,10 @@ public class RoleStore implements Store<Role> {
      */
     @Override
     public void delete(Role value) {
+        this.roles.delete(value);
+    }
 
+    public SimpleArray<Role> getRoles() {
+        return this.roles;
     }
 }
