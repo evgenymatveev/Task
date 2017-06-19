@@ -63,7 +63,9 @@ public class SimpleArrayTest {
         simpleArray.add(1);
         simpleArray.add(2);
 
-        assertThat(simpleArray.update(2, 10), is(true));
+        simpleArray.update(2, 10);
+
+        assertThat(simpleArray.getValue(1), is(10));
     }
 
     /**
@@ -76,6 +78,20 @@ public class SimpleArrayTest {
         simpleArray.add(2);
 
         assertThat(simpleArray.getIndex(2), is(1));
+    }
+
+    /**
+     * Method checks the deletion of an element from an array.
+     */
+    @Test
+    public void whenArraydeleteElementTypeInteger() {
+        SimpleArray<Integer> simpleArray = new SimpleArray<Integer>(2);
+        simpleArray.add(1);
+        simpleArray.add(2);
+
+        simpleArray.delete(2);
+
+        assertThat(simpleArray.getIndex(2), is(-1));
     }
 
 }
