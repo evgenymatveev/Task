@@ -5,7 +5,7 @@ package ru.ematveev.generic;
  */
 public class UserStore implements Store<User> {
     private final int size = 5;
-    private SimpleArray<User> users = new SimpleArray<>(size);
+    private SimpleArray<User> users = new SimpleArray<User>(size);
     /**
      * Method addition the value different types.
      * @param value the enter value.
@@ -30,5 +30,9 @@ public class UserStore implements Store<User> {
     @Override
     public void delete(User value) {
         this.users.delete(value);
+    }
+
+    public SimpleArray<User> getUsers() {
+        return this.users;
     }
 }
