@@ -1,7 +1,8 @@
 package ru.ematveev.generic;
 
 /**
- * @author Matveev Evgeny.
+ * Abstract storage.
+ * @param <T> parametric type for storage.
  */
 class AbstractStore<T extends Base> implements Store<T> {
     private final int size = 5;
