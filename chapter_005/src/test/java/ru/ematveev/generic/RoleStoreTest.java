@@ -20,7 +20,7 @@ public class RoleStoreTest {
         roleStore.add(role1);
         roleStore.add(role2);
 
-        SimpleArray<Role> role = roleStore.getRoles();
+        SimpleArray<Role> role = roleStore.getBase();
 
         assertThat(role.getValue(1).getId(), is("2"));
     }
@@ -37,7 +37,7 @@ public class RoleStoreTest {
         roleStore.add(role2);
 
         roleStore.update(role1, roleNew);
-        SimpleArray<Role> role = roleStore.getRoles();
+        SimpleArray<Role> role = roleStore.getBase();
 
         assertThat(role.getValue(0).getId(), is("3"));
     }
@@ -53,7 +53,7 @@ public class RoleStoreTest {
         roleStore.add(role2);
 
         roleStore.delete(role1);
-        SimpleArray<Role> role = roleStore.getRoles();
+        SimpleArray<Role> role = roleStore.getBase();
 
         assertThat(role.getValue(0).getId(), is("2"));
     }

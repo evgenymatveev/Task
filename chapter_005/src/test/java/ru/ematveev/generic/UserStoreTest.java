@@ -20,7 +20,7 @@ public class UserStoreTest {
         userStore.add(user1);
         userStore.add(user2);
 
-        SimpleArray<User> user = userStore.getUsers();
+        SimpleArray<User> user = userStore.getBase();
 
         assertThat(user.getValue(1).getId(), is("2"));
     }
@@ -37,7 +37,7 @@ public class UserStoreTest {
         userStore.add(user2);
 
         userStore.update(user1, userNew);
-        SimpleArray<User> user = userStore.getUsers();
+        SimpleArray<User> user = userStore.getBase();
 
         assertThat(user.getValue(0).getId(), is("3"));
     }
@@ -53,7 +53,7 @@ public class UserStoreTest {
         userStore.add(user2);
 
         userStore.delete(user1);
-        SimpleArray<User> user = userStore.getUsers();
+        SimpleArray<User> user = userStore.getBase();
 
         assertThat(user.getValue(0).getId(), is("2"));
     }
