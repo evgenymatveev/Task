@@ -22,11 +22,13 @@ public class StackContainer<T> {
     }
 
     /**
-     * Method get the last element.
+     * Method delete and get the last element.
      *
      * @return the last element.
      */
     public T pop() {
-        return linkedList.get(linkedList.getSize() - 1);
+        T old = linkedList.get(linkedList.getSize() - 1);
+        linkedList.remove(linkedList.getSize() - 1);
+        return old;
     }
 }

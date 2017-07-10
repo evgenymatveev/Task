@@ -22,11 +22,13 @@ public class QueueContainer<T> {
     }
 
     /**
-     * Method get the first element.
+     * Method delete and get the first element.
      *
      * @return the first element.
      */
     public T peek() {
-        return linkedList.get(0);
+        T old = linkedList.get(0);
+        linkedList.remove(0);
+        return old;
     }
 }
