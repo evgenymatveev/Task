@@ -13,6 +13,14 @@ public class LinkedListContainer<T> implements SimpleContainer<T> {
     private int size;
     private int current = 0;
 
+    public Item<T> getLast() {
+        return last;
+    }
+
+    public Item<T> getFirst() {
+        return first;
+    }
+
     public int getSize() {
         return size;
     }
@@ -33,6 +41,30 @@ public class LinkedListContainer<T> implements SimpleContainer<T> {
             last = node;
             size++;
         }
+    }
+
+    /**
+     * Method delete the element by index.
+     * @param index number the element.
+     * @return the value of the deleted item.
+     */
+    public T remove(int index) {
+        if(index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
+        if(size == 0) {
+            throw new NullPointerException("Empty list");
+        }
+        Item<T> node = first;
+            for(int i = 0; i < index; i++) {
+                node = node.next;
+            }
+            Item<T> nodeOld = node;
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
+            node.next = node.prev = null;
+            size--;
+            return nodeOld.element;
     }
 
     /**
