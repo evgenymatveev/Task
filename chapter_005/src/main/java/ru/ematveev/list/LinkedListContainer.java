@@ -49,20 +49,21 @@ public class LinkedListContainer<T> implements SimpleContainer<T> {
      * @return the value of the deleted item.
      */
     public T remove(int index) {
-        if(index < 0 || index > size) {
+        if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
-        if(size == 0) {
+        if (size == 0) {
             throw new NullPointerException("Empty list");
         }
         Item<T> node = first;
-            for(int i = 0; i < index; i++) {
+            for (int i = 0; i < index; i++) {
                 node = node.next;
             }
             Item<T> nodeOld = node;
             node.prev.next = node.next;
             node.next.prev = node.prev;
-            node.next = node.prev = null;
+            node.next = null;
+            node.prev = null;
             size--;
             return nodeOld.element;
     }
