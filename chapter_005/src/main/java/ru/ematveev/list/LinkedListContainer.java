@@ -8,18 +8,10 @@ import java.util.NoSuchElementException;
  * @param <T> the type of objects.
  */
 public class LinkedListContainer<T> implements SimpleContainer<T> {
-    private Item<T> first = null;
-    private Item<T> last = null;
+    private Item<T> first;
+    private Item<T> last;
     private int size;
     private int current = 0;
-
-    public Item<T> getLast() {
-        return last;
-    }
-
-    public Item<T> getFirst() {
-        return first;
-    }
 
     public int getSize() {
         return size;
@@ -32,13 +24,13 @@ public class LinkedListContainer<T> implements SimpleContainer<T> {
     @Override
     public void add(final T t) {
         if (size == 0) {
-            first = new Item<>(t, null, null);
-            last = first;
+            this.first = new Item<>(t, null, null);
+            this.last = this.first;
             size++;
         } else {
-            Item<T> node = new Item<>(t, null, null);
-            last.next = node;
-            last = node;
+            Item<T> node = new Item<>(t, null, this.last);
+            this.last.next = node;
+            this.last = node;
             size++;
         }
     }
@@ -55,15 +47,26 @@ public class LinkedListContainer<T> implements SimpleContainer<T> {
         if (size == 0) {
             throw new NullPointerException("Empty list");
         }
-        Item<T> node = first;
+        Item<T> node = this.first;
+
             for (int i = 0; i < index; i++) {
                 node = node.next;
             }
             Item<T> nodeOld = node;
-            node.prev.next = node.next;
-            node.next.prev = node.prev;
-            node.next = null;
-            node.prev = null;
+
+            if (node.prev == null) {
+                this.first = node.next;
+            } else {
+                node.prev.next = node.next;
+                node.prev = null;
+            }
+
+            if (node.next == null) {
+                this.last = node.prev;
+            } else {
+                node.next.prev = node.prev;
+                node.next = null;
+            }
             size--;
             return nodeOld.element;
     }
@@ -115,7 +118,7 @@ public class LinkedListContainer<T> implements SimpleContainer<T> {
         private Item<T> next;
         private Item<T> prev;
 
-        private Item(final T element, final Item<T> next, final Item<T> prev) {
+        private Item(T element, Item<T> next, Item<T> prev) {
             this.element = element;
             this.next = next;
             this.prev = prev;
