@@ -27,5 +27,21 @@ public class UserTest {
 
         System.out.println(map);
     }
+    /**
+     * Test the map when the methods hashcode is redefined.
+     */
+    @Test
+    public void whenMethodHashcodeRedefined() {
+        Calendar birthdayfirst = new GregorianCalendar(1977, 5, 7);
+        Calendar birthdaysecond = new GregorianCalendar(1977, 5, 7);
+        User2 first = new User2("Evgen", 30, birthdayfirst);
+        User2 second = new User2("Evgen", 30, birthdaysecond);
+
+        Map<User2, Object> map = new HashMap<>();
+        map.put(first, null);
+        map.put(second, null);
+
+        System.out.println(map);
+    }
 
 }
