@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class UserTest {
     /**
-     * Test the map when the methods equals and hashcode is not redefined.
+     * Test the map when the methods equals() and hashcode() is not redefined.
      */
     @Test
     public void whenMethodsEqualsAndHashcodeNotRedefined() {
@@ -28,7 +28,7 @@ public class UserTest {
         System.out.println(map);
     }
     /**
-     * Test the map when the methods hashcode is redefined.
+     * Test the map when the methods hashcode() is redefined.
      */
     @Test
     public void whenMethodHashcodeRedefined() {
@@ -38,6 +38,22 @@ public class UserTest {
         User2 second = new User2("Evgen", 30, birthdaysecond);
 
         Map<User2, Object> map = new HashMap<>();
+        map.put(first, null);
+        map.put(second, null);
+
+        System.out.println(map);
+    }
+    /**
+     * Test the map when the methods equals() is redefined.
+     */
+    @Test
+    public void whenMethodEqualsRedefined() {
+        Calendar birthdayfirst = new GregorianCalendar(1977, 5, 7);
+        Calendar birthdaysecond = new GregorianCalendar(1977, 5, 7);
+        User3 first = new User3("Evgen", 30, birthdayfirst);
+        User3 second = new User3("Evgen", 30, birthdaysecond);
+
+        Map<User3, Object> map = new HashMap<>();
         map.put(first, null);
         map.put(second, null);
 
