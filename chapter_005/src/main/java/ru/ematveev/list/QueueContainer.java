@@ -27,8 +27,6 @@ public class QueueContainer<T> {
      * @return the first element.
      */
     public T peek() {
-        T old = linkedList.get(0);
-        linkedList.remove(0);
-        return old;
+        return linkedList.remove(0);
     }
 }

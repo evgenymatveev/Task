@@ -25,7 +25,7 @@ public class StackContainerTest {
      * Test check getting last element.
      */
     @Test
-    public void whenGetElementFromContainer() {
+    public void whenGetAndRemoveLastElementFromContainer() {
         StackContainer<Integer> stackContainer = new StackContainer<Integer>();
         stackContainer.push(2);
         stackContainer.push(5);

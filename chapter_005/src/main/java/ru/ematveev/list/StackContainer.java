@@ -27,8 +27,6 @@ public class StackContainer<T> {
      * @return the last element.
      */
     public T pop() {
-        T old = linkedList.get(linkedList.getSize() - 1);
-        linkedList.remove(linkedList.getSize() - 1);
-        return old;
+        return linkedList.remove(linkedList.getSize() - 1);
     }
 }
