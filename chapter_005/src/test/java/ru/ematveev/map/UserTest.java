@@ -59,5 +59,21 @@ public class UserTest {
 
         System.out.println(map);
     }
+    /**
+     * Test the map when the methods equals() and hashcode() is redefined.
+     */
+    @Test
+    public void whenMethodsEqualsAndHashcodeRedefined() {
+        Calendar birthdayfirst = new GregorianCalendar(1977, 5, 7);
+        Calendar birthdaysecond = new GregorianCalendar(1977, 5, 7);
+        User4 first = new User4("Evgen", 30, birthdayfirst);
+        User4 second = new User4("Evgen", 30, birthdaysecond);
+
+        Map<User4, Object> map = new HashMap<>();
+        map.put(first, null);
+        map.put(second, null);
+
+        System.out.println(map);
+    }
 
 }
