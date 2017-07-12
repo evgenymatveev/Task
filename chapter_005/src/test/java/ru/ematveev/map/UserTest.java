@@ -59,6 +59,7 @@ public class UserTest {
 
         System.out.println(map);
     }
+
     /**
      * Test the map when the methods equals() and hashcode() is redefined.
      */
